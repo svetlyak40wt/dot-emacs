@@ -55,9 +55,10 @@
 (el-get 'sync)
 ;; end of el-get init
 
-(setq browse-url-generic-program "ssh"
-      browse-url-generic-args '("back" "open")
-      browse-url-browser-function 'browse-url-generic)
+(if (getenv "SSH_CONNECTION")
+    (setq browse-url-generic-program "ssh"
+          browse-url-generic-args '("back" "open")
+          browse-url-browser-function 'browse-url-generic))
 
 (load-theme 'solarized-light t)
 
