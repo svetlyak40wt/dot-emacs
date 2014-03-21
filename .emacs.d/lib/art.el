@@ -1,0 +1,1 @@
+(print "art.el loaded")
