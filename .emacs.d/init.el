@@ -18,17 +18,18 @@
                       ;; flymake-python-pyflakes
                       ;; flymake-cursor
                       ;; whitespace
-                      ;; expand-region
-                      ;; ; переход на заданный символ
-                      ;; ace-jump-mode
+                      ; выделение окружающего контекста по C-c =
+                      expand-region
+                      ; переход на заданный символ C-c 0
+                      ace-jump-mode
                       ;; ; пометка и редактирование нескольких регионов сразу
                       ;; multiple-cursors
                       ;; ; зависимости для Jedi
                       ;; auto-complete
                       ;; fuzzy
-                      ;; iy-go-to-char ;; move to the next occurence of the char
                       ;; py-import-check ;; pip install importchecker, запускать как py-import-check
-                      ;; goto-last-change
+                      ; переход на строку в которой было последнее редактирование C-c C-\
+                      goto-last-change
                       ;; yasnippet
                       )
   "A list of packages to ensure are installed at launch.")
@@ -45,10 +46,10 @@
 
 (add-to-list 'load-path "~/.emacs.d/lib")
 
-(print "LOAD-PATH:")
-(dolist (name load-path)
-  (print name))
+;; (print "LOAD-PATH:")
+;; (dolist (name load-path)
+;;   (print name))
 
 
-(print "Init.el loaded")
-(require 'art)
+(require '40wt-bindings)
+(require '40wt-org)
