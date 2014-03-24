@@ -34,4 +34,4 @@
 (define-key input-decode-map "\e[1;10D" [M-S-left])
 
 
-(provide '40wt-binding)
+(provide '40wt-bindings)
