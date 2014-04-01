@@ -2,6 +2,7 @@
   `(progn
      (defun python-config ()
        (local-set-key (kbd "RET") 'newline-and-indent)
+       (local-set-key (kbd "C-c n") 'flymake-goto-next-error)
   
        ;; Snippets
        (yas-minor-mode)
@@ -11,6 +12,12 @@
        (require 'auto-complete)
        (auto-complete-mode)
        (highlight-lines-matching-regexp "pdb\.set_trace" "hi-blue")
-       (jedi:setup))
+       (jedi:setup)
 
-       (add-hook 'python-mode-hook 'python-config)))
+       ;; Turn on automatic syntax checker
+       ;; https://github.com/purcell/flymake-python-pyflakes
+       (require 'flymake-python-pyflakes)
+       (flymake-python-pyflakes-load))
+
+     
+     (add-hook 'python-mode-hook 'python-config)))
