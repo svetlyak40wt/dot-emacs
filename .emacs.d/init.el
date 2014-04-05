@@ -15,41 +15,42 @@
                       ;; mustache-mode
                       ;; python
                       ;; pymacs
-                      ;; flymake-python-pyflakes
-                      ;; flymake-cursor
                       ;; whitespace
-                      ; выделение окружающего контекста по C-c =
-                      expand-region
                       ; переход на заданный символ C-c 0
                       ace-jump-mode
                       ;; ; пометка и редактирование нескольких регионов сразу
                       ;; multiple-cursors
                       ;; ; зависимости для Jedi
-                      ;; auto-complete
+
+                      
                       ;; fuzzy
-                      ;; py-import-check ;; pip install importchecker, запускать как py-import-check
                       ; переход на строку в которой было последнее редактирование C-c C-\
                       goto-last-change
-                      ;; yasnippet
                       )
   "A list of packages to ensure are installed at launch.")
 
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-        (package-install p)))
+(defun use-package (name)
+  "Install package if it is not installed."
+  (progn
+    (print (concat "Using package: " (pp-to-string name)))
+    (when (not (package-installed-p name))
+      (package-install name))))
 
+
+(defun use-packages (names)
+  "Install all named packages if they are not already installed"
+  (mapc 'use-package names))
+
+(use-packages my-packages)
+
+;; yasnippet configuration
+(require 'yasnippet)
+(yas/load-directory "~/.emacs.d/snippets")
 
 (load-theme 'solarized-light t)
 
 (setq custom-file "~/.emacs.d/customizations.el")
 (load custom-file)
 
-(add-to-list 'load-path "~/.emacs.d/lib")
-
-;; (print "LOAD-PATH:")
-;; (dolist (name load-path)
-;;   (print name))
-
-
-(require '40wt-bindings)
-(require '40wt-org)
+; Now load all files from ~/.emacs.d/lib
+(mapc 'load (directory-files "~/.emacs.d/lib" t "^[^#].*el$"))
