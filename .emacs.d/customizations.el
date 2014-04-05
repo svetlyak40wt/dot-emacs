@@ -4,39 +4,23 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(fill-column 1000)
- '(org-agenda-window-setup (quote current-window))
- 
- '(org-agenda-files (quote ("~/org-test/todo.org")))
- '(org-default-notes-file "~/org-test/notes.org")
+ '(org-agenda-custom-commands (quote (("d" todo "DELEGATED" nil) ("c" todo "DONE|DEFERRED|CANCELLED" nil) ("w" todo "WAITING" nil) ("W" agenda "" ((org-agenda-ndays 21))) ("A" agenda "" ((org-agenda-skip-function (lambda nil (org-agenda-skip-entry-if (quote notregexp) "\\=.*\\[#A\\]"))) (org-agenda-ndays 1) (org-agenda-overriding-header "Today's Priority #A tasks: "))) ("u" alltodo "" ((org-agenda-skip-function (lambda nil (org-agenda-skip-entry-if (quote scheduled) (quote deadline) (quote regexp) "
+]+>"))) (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
+ '(org-agenda-files (quote ("~/txt/areas/sobaka.org" "~/txt/areas/opensource.org" "~/txt/areas/dom.org" "~/txt/areas/yandex.org" "~/txt/projects/pizzbook.org" "~/txt/projects/certificator.org" "~/txt/projects/upravlyator.org" "~/txt/todo.org" "/Users/art/txt/projects/allmychanges.org" "/Users/art/txt/projects/deploy.org")))
  '(org-agenda-ndays 7)
- '(org-deadline-warning-days 14)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
- '(org-agenda-skip-scheduled-if-done t)
+ '(org-agenda-skip-scheduled-if-done nil)
  '(org-agenda-start-on-weekday nil)
- '(org-reverse-note-order t)
+ '(org-agenda-window-setup (quote current-window))
+ '(org-deadline-warning-days 14)
+ '(org-default-notes-file "~/txt/notes.org")
+ '(org-enforce-todo-dependencies t)
  '(org-fast-tag-selection-single-key (quote expert))
- '(org-agenda-custom-commands
-   (quote (("d" todo "DELEGATED" nil)
-           ("c" todo "DONE|DEFERRED|CANCELLED" nil)
-           ("w" todo "WAITING" nil)
-           ("W" agenda "" ((org-agenda-ndays 21)))
-           ("A" agenda ""
-            ((org-agenda-skip-function
-              (lambda nil
-                (org-agenda-skip-entry-if (quote notregexp) "\\=.*\\[#A\\]")))
-             (org-agenda-ndays 1)
-             (org-agenda-overriding-header "Today's Priority #A tasks: ")))
-           ("u" alltodo ""
-            ((org-agenda-skip-function
-              (lambda nil
-                (org-agenda-skip-entry-if (quote scheduled) (quote deadline)
-                                          (quote regexp) "\n]+>")))
-             (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
  '(org-remember-store-without-prompt t)
- '(org-remember-templates
-   (quote ((116 "* TODO %?\n  %u" "~/org-test/todo.org" "Tasks")
-           (110 "* %u %?" "~/org-test/notes.org" "Notes"))))
+ '(org-remember-templates (quote ((116 "* TODO %?
+  %u" "~/txt/todo.org" "INBOX") (110 "* %u %?" "~/txt/notes.org" "Notes"))))
+ '(org-reverse-note-order t)
  '(remember-annotation-functions (quote (org-remember-annotation)))
  '(remember-handler-functions (quote (org-remember-handler))))
 

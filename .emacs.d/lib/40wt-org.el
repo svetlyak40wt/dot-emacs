@@ -8,6 +8,10 @@
 
 (eval-after-load "org"
   '(progn
+     ; http://orgmode.org/manual/Fast-access-to-TODO-states.html#Fast-access-to-TODO-states
+     (setq org-todo-keywords
+       '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "DELEGATED(D@/!)" "APPT(a)" "|" "DONE(d!)" "DEFERRED(f!)" "CANCELLED(c!)")))
+
      (define-prefix-command 'org-todo-state-map)
 
      (define-key org-mode-map "\C-cx" 'org-todo-state-map)
