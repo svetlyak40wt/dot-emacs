@@ -18,8 +18,8 @@
  '(org-enforce-todo-dependencies t)
  '(org-fast-tag-selection-single-key (quote expert))
  '(org-remember-store-without-prompt t)
- '(org-remember-templates (quote ((116 "* TODO %?
-  %u" "~/txt/todo.org" "INBOX") (110 "* %u %?" "~/txt/notes.org" "Notes"))))
+ '(org-remember-templates (quote (("" 116 "* TODO %?
+  %u" "~/txt/todo.org" "INBOX" nil))))
  '(org-reverse-note-order t)
  '(remember-annotation-functions (quote (org-remember-annotation)))
  '(remember-handler-functions (quote (org-remember-handler))))
