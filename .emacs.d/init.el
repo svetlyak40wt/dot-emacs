@@ -26,6 +26,10 @@
                       ;; fuzzy
                       ; переход на строку в которой было последнее редактирование C-c C-\
                       goto-last-change
+                      ;; раскрытие аббревиатур в шаблоны
+                      yasnippet
+                      ;; без комментариев
+                      markdown-mode
                       )
   "A list of packages to ensure are installed at launch.")
 
