@@ -58,3 +58,5 @@
 
 ; Now load all files from ~/.emacs.d/lib
 (mapc 'load (directory-files "~/.emacs.d/lib" t "^[^#].*el$"))
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
