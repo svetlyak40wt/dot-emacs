@@ -39,10 +39,22 @@
      ; (define-key org-agenda-keymap "\C-p" 'previous-line)
 
 
-     (setq org-feed-alist
-           '(("Input from evernote"
-              "https://zapier/rss/source"
-              "~/txt/todo.org" "INBOX")))
+     ;; setup todo items clocking
+     ;; http://orgmode.org/manual/Clocking-work-time.html#Clocking-work-time
+     (setq org-clock-persist 'history)
+     (org-clock-persistence-insinuate)
+
+     ;; optional configuration of RSS source for inbox
+     (if (file-exists-p "~/.org-feed")
+         (progn (load "~/.org-feed")
+                (setq org-feed-alist
+                      (list (list "Input from evernote"
+                                  org-inbox-rss-feed
+                                  "~/txt/todo.org" "INBOX")))
+                ;; update inbox every 15 minutes
+                (run-with-idle-timer 30 (* 15 60) 'org-feed-update-all)
+))
+
      (setq org-export-backends '(html md))))
 
 (require 'remember)
