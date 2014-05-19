@@ -7,6 +7,9 @@
 ;; вместо кучи команд начинающихся с kmacro-
 (global-set-key (kbd "C-x C-k") 'kill-region)
 
+;; на этом биндинге ничего нет
+(global-set-key (kbd "C-c q") 'join-line)
+
 ;; вместо zap-to-char
 (global-set-key (kbd "M-z") 'undo)
 ;; на этом биндинге ничего нет
