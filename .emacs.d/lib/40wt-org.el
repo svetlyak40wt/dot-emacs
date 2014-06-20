@@ -12,12 +12,17 @@
      (setq org-todo-keywords
        '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "DELEGATED(D@/!)" "APPT(a)" "|" "DONE(d!)" "DEFERRED(f!)" "CANCELLED(c!)")))
 
+     (setq org-global-properties
+           '(("Effort_ALL". "0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")))
+
      (define-prefix-command 'org-todo-state-map)
 
      (define-key org-mode-map "\C-cx" 'org-todo-state-map)
      ;(define-key org-mode-map (kbd "C-c a l") 'org-agenda-list)
      ;(define-key org-mode-map (kbd "C-c a t") 'org-timeline)
      (define-key org-mode-map (kbd "C-x C-k") 'org-cut-subtree)
+
+     (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
      
 
      (define-key org-todo-state-map "x"
@@ -52,7 +57,7 @@
                                   org-inbox-rss-feed
                                   "~/txt/todo.org" "INBOX")))
                 ;; update inbox every 15 minutes
-                (run-with-idle-timer 30 (* 15 60) 'org-feed-update-all)
+                (run-with-idle-timer (* 15 60) 1 'org-feed-update-all)
 ))
 
      (setq org-export-backends '(html md))))
