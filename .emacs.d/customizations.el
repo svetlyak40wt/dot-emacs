@@ -21,7 +21,9 @@
  '(org-habit-following-days 3)
  '(org-habit-graph-column 80)
  '(org-habit-preceding-days 21)
+ '(org-log-refile (quote time))
  '(org-modules (quote (org-habit)))
+ '(org-refile-targets (quote ((org-agenda-files :tag . "inbox"))))
  '(org-remember-store-without-prompt t)
  '(org-remember-templates (quote (("" 116 "* TODO %?
   %u" "~/txt/todo.org" "INBOX" nil))))
