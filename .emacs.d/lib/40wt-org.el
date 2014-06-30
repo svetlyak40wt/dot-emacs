@@ -1,10 +1,10 @@
 ;;; from http://newartisans.com/2007/08/using-org-mode-as-a-day-planner/
+;;; Описание хуков: http://orgmode.org/tmp/worg/org-configs/org-hooks.html
 
 (require 'org-install)
 
-;(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-
 (define-key mode-specific-map [?a] 'org-agenda)
+
 
 (eval-after-load "org"
   '(progn
@@ -23,7 +23,7 @@
      (define-key org-mode-map (kbd "C-x C-k") 'org-cut-subtree)
 
      (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
-     
+
 
      (define-key org-todo-state-map "x"
        #'(lambda nil (interactive) (org-todo "CANCELLED")))
