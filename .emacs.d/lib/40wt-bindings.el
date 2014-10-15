@@ -6,6 +6,11 @@
 (global-set-key (kbd "C-w") 'backward-kill-word)
 ;; вместо кучи команд начинающихся с kmacro-
 (global-set-key (kbd "C-x C-k") 'kill-region)
+;; вместо indent-new-comment-line
+(global-set-key (kbd "M-j")
+                (lambda ()
+                  (interactive)
+                  (join-line -1)))
 
 ;; на этом биндинге ничего нет
 (global-set-key (kbd "C-c q") 'join-line)
