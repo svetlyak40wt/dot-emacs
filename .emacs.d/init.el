@@ -62,3 +62,7 @@
 (mapc 'load (directory-files "~/.emacs.d/lib" t "^[^#].*el$"))
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+(let ((local-conf (expand-file-name ".local.el")))
+  (if (file-exists-p local-conf)
+      (load local-conf)))
