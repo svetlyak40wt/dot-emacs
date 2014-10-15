@@ -73,10 +73,12 @@
                                   org-inbox-rss-feed
                                   "~/txt/todo.org" "INBOX")))
                 ;; update inbox every 15 minutes
-                (run-with-idle-timer (* 15 60) 1 'org-feed-update-all)
-))
+                (run-with-idle-timer (* 15 60) 1 'org-feed-update-all)))
 
-     (setq org-export-backends '(html md))))
+     (setq org-export-backends '(html md))
+
+     (org-babel-do-load-languages 'org-babel-load-languages
+                                  '((sh . true) (python . true)))))
 
 (require 'remember)
 
