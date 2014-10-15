@@ -27,7 +27,6 @@
 (global-set-key (kbd "C-c C-\\") 'goto-last-change)
 ;; END используем то, на чем нет биндингов
 
-
 ;; какое-то старье, которое наверное можно удалить
 ;; Steve Yegge утверждает что это удобнее чем M-x
 ;(global-set-key (kbd "C-x C-m") 'execute-extended-command)

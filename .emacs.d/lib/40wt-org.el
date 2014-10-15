@@ -24,7 +24,6 @@
 
      (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
 
-
      (define-key org-todo-state-map "x"
        #'(lambda nil (interactive) (org-todo "CANCELLED")))
      (define-key org-todo-state-map "d"
@@ -37,6 +36,23 @@
        #'(lambda nil (interactive) (org-todo "STARTED")))
      (define-key org-todo-state-map "w"
        #'(lambda nil (interactive) (org-todo "WAITING")))
+
+
+     ;; delay task to 1 week
+     (defun 40wt/next-week ()
+       (interactive)
+       (org-agenda-schedule nil "+7d"))
+
+     (defun 40wt/clone-schedule ()
+       (interactive)
+       (org-agenda-schedule nil (substring org-last-inserted-timestamp 1 -1)))
+
+     ;; other useful commands
+     ;; http://sachachua.com/blog/2013/01/emacs-org-task-related-keyboard-shortcuts-agenda/
+     (add-hook 'org-agenda-mode-hook
+               (lambda ()
+                 (define-key org-agenda-mode-map "1" '40wt/next-week)
+                 (define-key org-agenda-mode-map "2" '40wt/clone-schedule)))
 
      ; (define-key org-agenda-mode-map "\C-n" 'next-line)
      ; (define-key org-agenda-keymap "\C-n" 'next-line)
