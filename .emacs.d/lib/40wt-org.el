@@ -80,12 +80,12 @@
      (org-babel-do-load-languages 'org-babel-load-languages
                                   '((sh . true) (python . true)))))
 
-(require 'remember)
+;; (require 'remember)
 
-(add-hook 'remember-mode-hook 'org-remember-apply-template)
+;; (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
 ;(define-key global-map [(control meta ?r)] 'remember)
-(define-key global-map (kbd "C-M-r") 'remember)
+(define-key global-map (kbd "C-M-r") 'org-capture)
 
 
 (provide '40wt-org)
