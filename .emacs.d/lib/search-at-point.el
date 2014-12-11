@@ -1,4 +1,6 @@
 ;; Taken from: http://www.emacswiki.org/emacs/SearchAtPoint#toc6
+;; But with modification which uses (beginning-of-thing 'symbol)
+;; and (end-of-thing 'symbol)
 ;;
 ;; Move to beginning of word before yanking word in isearch-mode.
 ;; Make C-s C-w and C-r C-w act like Vim's g* and g#, keeping Emacs'
@@ -12,8 +14,8 @@
   ;; Making this work after a search string is entered by user
   ;; is too hard to do, so work only when search string is empty.
   (if (= 0 (length isearch-string))
-      (beginning-of-thing 'word))
-  (isearch-yank-word-or-char)
+      (beginning-of-thing 'symbol))
+  (isearch-yank-internal (lambda () (end-of-thing 'symbol)))
   ;; Revert to 'isearch-yank-word-or-char for subsequent calls
   (substitute-key-definition 'my-isearch-yank-word-or-char-from-beginning 
 			     'isearch-yank-word-or-char
