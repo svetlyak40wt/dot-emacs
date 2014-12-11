@@ -78,7 +78,14 @@
      (setq org-export-backends '(html md))
 
      (org-babel-do-load-languages 'org-babel-load-languages
-                                  '((sh . true) (python . true)))))
+                                  '((sh . true) (python . true)))
+
+     ;; Set to the location of your Org files on your local system
+     (setq org-directory "~/txt")
+     ;; Set to the name of the file where new notes will be stored
+     (setq org-mobile-inbox-for-pull "~/txt/from-mobile.org")
+     ;; Set to <your Dropbox root directory>/MobileOrg.
+     (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")))
 
 ;; (require 'remember)
 
