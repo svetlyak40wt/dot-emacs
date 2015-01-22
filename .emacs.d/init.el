@@ -3,6 +3,10 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
+(add-to-list 'package-archives
+             '("MELPA" . "http://melpa.milkbox.net/packages/") t)
+
+
 (package-initialize)
 
 (when (not package-archive-contents)
