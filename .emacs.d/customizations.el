@@ -36,7 +36,7 @@
       ("/Users/art/txt/agenda.html")))))
  '(org-agenda-files
    (quote
-    ("~/txt/week.org" "~/txt/areas/education.org" "~/txt/areas/help-generator.org" "~/txt/areas/blog.org" "~/txt/areas/jimny.org" "~/txt/areas/sobaka.org" "~/txt/areas/pajero.org" "~/txt/areas/opensource.org" "~/txt/areas/dom.org" "~/txt/areas/yandex.org" "~/txt/projects/pizzbook.org" "~/txt/projects/certificator.org" "~/txt/projects/upravlyator.org" "~/txt/todo.org" "/Users/art/txt/projects/allmychanges.org" "/Users/art/txt/projects/deploy.org")))
+    ("~/txt/week.org" "~/txt/areas/education.org" "~/txt/areas/help-generator.org" "~/txt/areas/blog.org" "~/txt/areas/sobaka.org" "~/txt/areas/pajero.org" "~/txt/areas/opensource.org" "~/txt/areas/dom.org" "~/txt/areas/yandex.org" "~/txt/projects/pizzbook.org" "~/txt/projects/certificator.org" "~/txt/projects/upravlyator.org" "~/txt/todo.org" "/Users/art/txt/projects/allmychanges.org" "/Users/art/txt/projects/deploy.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
@@ -60,15 +60,8 @@
  '(org-log-refile (quote time))
  '(org-modules (quote (org-habit)))
  '(org-refile-targets (quote ((org-agenda-files :tag . "inbox"))))
- ;; '(org-remember-store-without-prompt t)
- ;; '(org-remember-templates
- ;;   (quote
- ;;    (("" 116 "* TODO %?
- ;;  %u" "~/txt/todo.org" "INBOX" nil))))
  '(org-reverse-note-order t)
  '(org-sort-agenda-noeffort-is-high nil)
- ;; '(remember-annotation-functions (quote (org-remember-annotation)))
- ;; '(remember-handler-functions (quote (org-remember-handler)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
