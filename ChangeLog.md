@@ -1,5 +1,5 @@
-0.2.0
-=====
+0.2.0 (2015-02-04)
+==================
 
 Add package bm – [visual bookmarks](https://github.com/joodland/bm) with bindings:
 
@@ -7,7 +7,7 @@ Add package bm – [visual bookmarks](https://github.com/joodland/bm) with bindi
 * `C-c <up>` goes to previous bookmark.
 * `C-c <down>` goes to next bookmark.
 
-0.1.0
-=====
+0.1.0 (2015-01-14)
+==================
 
 Initial release.
