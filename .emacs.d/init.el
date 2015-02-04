@@ -32,6 +32,9 @@
                       markdown-mode
                       ;; работа с git
                       magit
+
+                      ;; для пометки мест в файле и переходе между ними
+                      bm
                       )
   "A list of packages to ensure are installed at launch.")
 
