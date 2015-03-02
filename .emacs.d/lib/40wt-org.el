@@ -69,7 +69,7 @@
      (if (file-exists-p "~/.org-feed")
          (progn (load "~/.org-feed")
                 (setq org-feed-alist
-                      (list (list "Input from evernote"
+                      (list (list "TODO Rss Input"
                                   org-inbox-rss-feed
                                   "~/txt/todo.org" "INBOX")))
                 ;; update inbox every 15 minutes

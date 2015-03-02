@@ -36,7 +36,7 @@
       ("/Users/art/txt/agenda.html")))))
  '(org-agenda-files
    (quote
-    ("~/txt/week.org" "~/txt/areas/education.org" "~/txt/areas/help-generator.org" "~/txt/areas/blog.org" "~/txt/areas/sobaka.org" "~/txt/areas/pajero.org" "~/txt/areas/opensource.org" "~/txt/areas/dom.org" "~/txt/areas/yandex.org" "~/txt/projects/pizzbook.org" "~/txt/projects/certificator.org" "~/txt/projects/upravlyator.org" "~/txt/todo.org" "/Users/art/txt/projects/allmychanges.org" "/Users/art/txt/projects/deploy.org")))
+    ("~/txt/blog.org" "~/txt/notes/pdd/pdd.org" "~/txt/projects/saas.org" "~/txt/notes/marketing.org" "~/txt/notes/technology/development.org" "~/txt/notes/technology/devops.org" "~/txt/notes/technology/frontend.org" "~/txt/notes/auto/jimny.org" "~/txt/notes/auto/pajero.org" "~/txt/week.org" "~/txt/areas/education.org" "~/txt/areas/help-generator.org" "~/txt/areas/blog.org" "~/txt/areas/sobaka.org" "~/txt/areas/opensource.org" "~/txt/areas/dom.org" "~/txt/areas/yandex.org" "~/txt/projects/pizzbook.org" "~/txt/projects/certificator.org" "~/txt/projects/upravlyator.org" "~/txt/todo.org" "/Users/art/txt/projects/allmychanges.org" "/Users/art/txt/projects/deploy.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
@@ -62,6 +62,7 @@
  '(org-refile-targets (quote ((org-agenda-files :tag . "inbox"))))
  '(org-reverse-note-order t)
  '(org-sort-agenda-noeffort-is-high nil)
+ '(send-mail-function (quote sendmail-send-it))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
