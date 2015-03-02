@@ -1,3 +1,9 @@
+0.3.0 (2015-03-02)
+==================
+
+* Use `C-c C-x C-k` to `(org-cut-subtree)` and not shadow
+  `C-x C-k` which by default kills region.
+
 0.2.0 (2015-02-04)
 ==================
 

@@ -20,7 +20,7 @@
      (define-key org-mode-map "\C-cx" 'org-todo-state-map)
      ;(define-key org-mode-map (kbd "C-c a l") 'org-agenda-list)
      ;(define-key org-mode-map (kbd "C-c a t") 'org-timeline)
-     (define-key org-mode-map (kbd "C-x C-k") 'org-cut-subtree)
+     (define-key org-mode-map (kbd "C-c C-x C-k") 'org-cut-subtree)
 
      (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
 
