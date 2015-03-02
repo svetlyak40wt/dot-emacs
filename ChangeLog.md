@@ -3,6 +3,8 @@
 
 * Use `C-c C-x C-k` to `(org-cut-subtree)` and not shadow
   `C-x C-k` which by default kills region.
+* APPT and DELEGATED statuses were replaced with PAUSED in
+  org mode.
 
 0.2.0 (2015-02-04)
 ==================

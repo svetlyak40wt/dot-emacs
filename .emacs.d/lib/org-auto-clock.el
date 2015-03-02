@@ -18,8 +18,9 @@
 
 
      (defun wicked/org-clock-out-if-waiting ()
-       "Clock out when the task is marked WAITING."
-       (when (and (string= org-state "WAITING")
+       "Clock out when the task is marked WAITING or PAUSED."
+       (when (and (or (string= org-state "WAITING")
+                      (string= org-state "PAUSED"))
                   (equal (marker-buffer org-clock-marker) (current-buffer))
                   (< (point) org-clock-marker)
                   (> (save-excursion (outline-next-heading) (point))

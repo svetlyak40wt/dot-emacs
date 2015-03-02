@@ -10,7 +10,7 @@
   '(progn
      ; http://orgmode.org/manual/Fast-access-to-TODO-states.html#Fast-access-to-TODO-states
      (setq org-todo-keywords
-       '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "DELEGATED(D@/!)" "APPT(a)" "|" "DONE(d!)" "DEFERRED(f!)" "CANCELLED(c!)")))
+           '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "PAUSED(p!)" "|" "DONE(d!)" "DEFERRED(f!)" "CANCELLED(c!)")))
 
      (setq org-global-properties
            '(("Effort_ALL". "0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")))
@@ -30,8 +30,8 @@
        #'(lambda nil (interactive) (org-todo "DONE")))
      (define-key org-todo-state-map "f"
        #'(lambda nil (interactive) (org-todo "DEFERRED")))
-     (define-key org-todo-state-map "l"
-       #'(lambda nil (interactive) (org-todo "DELEGATED")))
+     (define-key org-todo-state-map "p"
+       #'(lambda nil (interactive) (org-todo "PAUSED")))
      (define-key org-todo-state-map "s"
        #'(lambda nil (interactive) (org-todo "STARTED")))
      (define-key org-todo-state-map "w"
