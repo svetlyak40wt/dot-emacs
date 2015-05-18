@@ -60,7 +60,8 @@
 (require 'yasnippet)
 (yas/load-directory "~/.emacs.d/snippets")
 
-(load-theme 'solarized-light t)
+;; https://github.com/sellout/emacs-color-theme-solarized
+(load-theme 'solarized t)
 
 (setq custom-file "~/.emacs.d/customizations.el")
 (load custom-file)
