@@ -45,7 +45,7 @@
 (defun use-package (name)
   "Install package if it is not installed."
   (progn
-    (print (concat "Using package: " (pp-to-string name)))
+    ;(print (concat "Using package: " (pp-to-string name)))
     (when (not (package-installed-p name))
       (package-install name))))
 
