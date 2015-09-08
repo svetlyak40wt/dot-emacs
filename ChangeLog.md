@@ -1,3 +1,8 @@
+0.4.0 (2015-09-07)
+==================
+
+* Load yasnippets only from `~/.emacs.d/snippets` directory.
+
 0.3.0 (2015-03-02)
 ==================
 
