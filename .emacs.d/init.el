@@ -36,7 +36,8 @@
                       markdown-mode
                       ;; работа с git
                       magit
-
+                      ;; использование сниппетов
+                      yasnippet
                       ;; для пометки мест в файле и переходе между ними
                       bm
                       )
@@ -58,6 +59,9 @@
 
 ;; yasnippet configuration
 (require 'yasnippet)
+;; настраиваем yasnippet только на мои сниппеты
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
 (yas/load-directory "~/.emacs.d/snippets")
 
 ;; https://github.com/sellout/emacs-color-theme-solarized
