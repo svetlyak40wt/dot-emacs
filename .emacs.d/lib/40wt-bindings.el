@@ -15,10 +15,10 @@
 ;; на этом биндинге ничего нет
 (global-set-key (kbd "C-c q") 'join-line)
 
-;; вместо zap-to-char
-(global-set-key (kbd "M-z") 'undo)
-;; на этом биндинге ничего нет
-(global-set-key (kbd "C-c z") 'zap-to-char)
+;; ;; вместо zap-to-char
+;; (global-set-key (kbd "M-z") 'undo)
+;; ;; на этом биндинге ничего нет
+;; (global-set-key (kbd "C-c z") 'zap-to-char)
 
 ;; BEGIN используем то, на чем нет биндингов
 (global-set-key (kbd "C-c =") 'er/expand-region)
