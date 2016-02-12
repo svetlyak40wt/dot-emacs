@@ -1,3 +1,11 @@
+0.5.0 (2016-02-12)
+==================
+
+* Dynamic org-mode's todo files and some other settings for org-mode.
+* Change mode-line to smart-mode-line.
+* Added shortcut C-c m to switch between js-mode and html-mode.
+* No more M-z for undo. Now it is zap-to-char again. Use standart C-/ for undo.
+
 0.3.0 (2015-03-02)
 ==================
 
