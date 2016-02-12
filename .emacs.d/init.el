@@ -16,6 +16,7 @@
 ;; Add in your own as you wish:
 (defvar my-packages '(better-defaults
 		      color-theme-solarized
+                      smart-mode-line
                       ;; mustache-mode
                       ;; python
                       ;; pymacs
@@ -61,6 +62,8 @@
 (yas/load-directory "~/.emacs.d/snippets")
 
 (load-theme 'solarized-light t)
+(setq sml/theme 'respectful)
+(sml/setup)
 
 (setq custom-file "~/.emacs.d/customizations.el")
 (load custom-file)
