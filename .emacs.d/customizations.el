@@ -3,7 +3,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(bitly-access-token "0205a8217856bf0e500fc3ea615219d76dc76f2b")
+ '(calendar-week-start-day 1)
+ '(custom-safe-themes
+   (quote
+    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "e87a2bd5abc8448f8676365692e908b709b93f2d3869c42a4371223aab7d9cf8" default)))
+ '(elfeed-feeds
+   (quote
+    ("http://feeds.feedburner.com/40-wt-firefly/all-posts" "http://svetlyak.ru" "https://www.upwork.com/jobs/rss?cn1[]=IT+%26+Networking&cn2[]=Network+%26+System+Administration&t[]=0&t[]=1&dur[]=0&dur[]=1&dur[]=13&dur[]=26&dur[]=none&wl[]=10&wl[]=30&wl[]=none&tba[]=0&tba[]=1-9&tba[]=10-&exp[]=1&exp[]=2&exp[]=3&amount[]=Min&amount[]=Max&q=docker&sortBy=s_ctime+desc")))
  '(fill-column 1000)
+ '(graphviz-dot-dot-program "/usr/local/bin/dot")
+ '(htmlize-output-type (quote inline-css))
  '(menu-bar-mode nil)
  '(org-agenda-custom-commands
    (quote
@@ -36,8 +46,15 @@
       ("/Users/art/txt/agenda.html")))))
  '(org-agenda-files
    (quote
-    ("~/txt/blog.org" "~/txt/notes/pdd/pdd.org" "~/txt/projects/saas.org" "~/txt/notes/marketing.org" "~/txt/notes/technology/development.org" "~/txt/notes/technology/devops.org" "~/txt/notes/technology/frontend.org" "~/txt/notes/auto/jimny.org" "~/txt/notes/auto/pajero.org" "~/txt/week.org" "~/txt/areas/education.org" "~/txt/areas/help-generator.org" "~/txt/areas/blog.org" "~/txt/areas/sobaka.org" "~/txt/areas/opensource.org" "~/txt/areas/dom.org" "~/txt/areas/yandex.org" "~/txt/projects/pizzbook.org" "~/txt/projects/certificator.org" "~/txt/projects/upravlyator.org" "~/txt/todo.org" "/Users/art/txt/projects/allmychanges.org" "/Users/art/txt/projects/deploy.org")))
+    ("/Users/art/txt/education/tasks.org" "/Users/art/txt/education/startups/tasks.org" "/Users/art/txt/life/tasks.org" "/Users/art/txt/life/auto/tasks.org" "/Users/art/txt/life/auto/jimny/tasks.org" "/Users/art/txt/life/auto/pajero/tasks.org" "/Users/art/txt/life/deti/tasks.org" "/Users/art/txt/life/dom/tasks.org" "/Users/art/txt/life/sobaka/tasks.org" "/Users/art/txt/life/test-razdel/tasks.org" "/Users/art/txt/life/test-razdel/another-test/tasks.org" "/Users/art/txt/projects/40ants/tasks.org" "/Users/art/txt/projects/allmychanges/tasks.org" "/Users/art/txt/projects/certificator/tasks.org" "/Users/art/txt/projects/dev.svetlyak.ru/tasks.org" "/Users/art/txt/projects/part-price.ru/tasks.org" "/Users/art/txt/projects/pdd/tasks.org" "/Users/art/txt/projects/workspace/tasks.org" "/Users/art/txt/projects/yamb/tasks.org" "/Users/art/txt/work/tasks.org")))
  '(org-agenda-ndays 7)
+ '(org-agenda-prefix-format
+   (quote
+    ((agenda . " %i %-12:c%?-12t% s")
+     (timeline . "  % s")
+     (todo . " %i %-12:c")
+     (tags . " %i %-12:c")
+     (search . " %i %-12:c"))))
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-scheduled-if-done nil)
@@ -46,7 +63,7 @@
  '(org-capture-templates
    (quote
     (("t" "Add TODO item" entry
-      (file+headline "~/txt/todo.org" "INBOX")
+      (file+headline "~/txt/inbox.org" "INBOX")
       "* TODO %?"))))
  '(org-columns-default-format
    "%70ITEM(Task) %15SCHEDULED %17Effort(Estimated Effort){:} %6CLOCKSUM")
@@ -60,7 +77,7 @@
  '(org-log-refile (quote time))
  '(org-modules (quote (org-habit)))
  '(org-refile-targets (quote ((org-agenda-files :tag . "inbox"))))
- '(org-reverse-note-order t)
+ '(org-reverse-note-order nil)
  '(org-sort-agenda-noeffort-is-high nil)
  '(send-mail-function (quote sendmail-send-it))
  '(show-paren-mode t)
