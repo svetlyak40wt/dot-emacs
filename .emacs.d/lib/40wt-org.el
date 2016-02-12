@@ -2,8 +2,50 @@
 ;;; Описание хуков: http://orgmode.org/tmp/worg/org-configs/org-hooks.html
 
 (require 'org-install)
+(require 'async)
 
 (define-key mode-specific-map [?a] 'org-agenda)
+
+
+
+(defun update-org-agenda-files ()
+  (add-to-list 'org-agenda-files buffer-file-name))
+
+
+(defun set-org-agenda-files ()
+  "Goes recursively through org-directory and adds
+all tasks.org files into the list."
+  (require 'f)
+  (require 's)
+
+  (setq org-agenda-files
+        (f-entries org-directory
+                   (lambda (filename)
+                     (s-ends-with-p "/tasks.org" filename))
+                   t)))
+
+
+(defun 40wt-configure-org-mode-buffer-hook ()
+  (let ((filename (buffer-file-name)))
+    (if (s-ends-with-p "/tasks.org" filename)
+        (add-hook 'after-save-hook 'update-org-agenda-files t t))))
+
+
+(defun 40wt-configure-org-mode-agenda-buffer-hook ()
+  (define-key org-agenda-mode-map "1" '40wt/next-week)
+  (define-key org-agenda-mode-map "2" '40wt/clone-schedule))
+
+
+(defun setup-org-caldav ()
+;  (setq org-caldav-url "https://caldav.yandex-team.ru")
+  (setq org-caldav-url "https://caldav.yandex-team.ru/principals/users/art@yandex-team.ru")
+;  (setq org-caldav-calendar-id "calendars/art%40yandex-team.ru/events-1527")
+   (setq org-caldav-calendar-id "events-1527")
+  
+   (setq org-caldav-inbox "~/txt/appointments.org"))
+(setq org-caldav-debug-level 2)
+
+  
 
 
 (eval-after-load "org"
@@ -49,10 +91,8 @@
 
      ;; other useful commands
      ;; http://sachachua.com/blog/2013/01/emacs-org-task-related-keyboard-shortcuts-agenda/
-     (add-hook 'org-agenda-mode-hook
-               (lambda ()
-                 (define-key org-agenda-mode-map "1" '40wt/next-week)
-                 (define-key org-agenda-mode-map "2" '40wt/clone-schedule)))
+     (add-hook 'org-agenda-mode-hook '40wt-configure-org-mode-agenda-buffer-hook)
+     (add-hook 'org-mode-hook '40wt-configure-org-mode-buffer-hook)
 
      ; (define-key org-agenda-mode-map "\C-n" 'next-line)
      ; (define-key org-agenda-keymap "\C-n" 'next-line)
@@ -71,7 +111,7 @@
                 (setq org-feed-alist
                       (list (list "TODO Rss Input"
                                   org-inbox-rss-feed
-                                  "~/txt/todo.org" "INBOX")))
+                                  "~/txt/inbox.org" "INBOX")))
                 ;; update inbox every 15 minutes
                 (run-with-idle-timer (* 15 60) 1 'org-feed-update-all)))
 
@@ -82,8 +122,9 @@
 
      ;; Set to the location of your Org files on your local system
      (setq org-directory "~/txt")
+     (set-org-agenda-files)
      ;; Set to the name of the file where new notes will be stored
-     (setq org-mobile-inbox-for-pull "~/txt/from-mobile.org")
+     (setq org-mobile-inbox-for-pull "~/txt/mobile-inbox.org")
      ;; Set to <your Dropbox root directory>/MobileOrg.
      (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")))
 
