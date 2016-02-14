@@ -37,7 +37,8 @@
                       markdown-mode
                       ;; работа с git
                       magit
-
+                      ;; использование сниппетов
+                      yasnippet
                       ;; для пометки мест в файле и переходе между ними
                       bm
                       )
@@ -46,7 +47,7 @@
 (defun use-package (name)
   "Install package if it is not installed."
   (progn
-    (print (concat "Using package: " (pp-to-string name)))
+    ;(print (concat "Using package: " (pp-to-string name)))
     (when (not (package-installed-p name))
       (package-install name))))
 
@@ -59,9 +60,15 @@
 
 ;; yasnippet configuration
 (require 'yasnippet)
+;; настраиваем yasnippet только на мои сниппеты
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
 (yas/load-directory "~/.emacs.d/snippets")
 
-(load-theme 'solarized-light t)
+; раньше была такая тема
+;(load-theme 'solarized-light t)
+;; https://github.com/sellout/emacs-color-theme-solarized
+(load-theme 'solarized t)
 (setq sml/theme 'respectful)
 (sml/setup)
 

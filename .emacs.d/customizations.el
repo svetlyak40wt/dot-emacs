@@ -44,9 +44,6 @@
       ((org-agenda-prefix-format "")
        (org-agenda-ndays 1))
       ("/Users/art/txt/agenda.html")))))
- '(org-agenda-files
-   (quote
-    ("/Users/art/txt/education/tasks.org" "/Users/art/txt/education/startups/tasks.org" "/Users/art/txt/life/tasks.org" "/Users/art/txt/life/auto/tasks.org" "/Users/art/txt/life/auto/jimny/tasks.org" "/Users/art/txt/life/auto/pajero/tasks.org" "/Users/art/txt/life/deti/tasks.org" "/Users/art/txt/life/dom/tasks.org" "/Users/art/txt/life/sobaka/tasks.org" "/Users/art/txt/life/test-razdel/tasks.org" "/Users/art/txt/life/test-razdel/another-test/tasks.org" "/Users/art/txt/projects/40ants/tasks.org" "/Users/art/txt/projects/allmychanges/tasks.org" "/Users/art/txt/projects/certificator/tasks.org" "/Users/art/txt/projects/dev.svetlyak.ru/tasks.org" "/Users/art/txt/projects/part-price.ru/tasks.org" "/Users/art/txt/projects/pdd/tasks.org" "/Users/art/txt/projects/workspace/tasks.org" "/Users/art/txt/projects/yamb/tasks.org" "/Users/art/txt/work/tasks.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-prefix-format
    (quote
@@ -79,6 +76,7 @@
  '(org-refile-targets (quote ((org-agenda-files :tag . "inbox"))))
  '(org-reverse-note-order nil)
  '(org-sort-agenda-noeffort-is-high nil)
+ '(pyvenv-activate nil)
  '(send-mail-function (quote sendmail-send-it))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -90,7 +88,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#fcf4dc" :foreground "#52676f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "Menlo"))))
- '(org-agenda-done ((t (:foreground "brightcyan"))))
- '(org-scheduled ((t (:foreground "color-28"))))
- '(org-scheduled-today ((t (:foreground "color-28"))))
+ '(org-agenda-done ((t (:foreground "brightcyan"))) t)
+ '(org-scheduled ((t (:foreground "color-28"))) t)
+ '(org-scheduled-today ((t (:foreground "color-28"))) t)
  '(show-paren-match ((t (:background "#e56545" :foreground "#00cdcd" :inverse-video nil :underline nil :slant normal :weight bold))) nil "подсвечиваем скобочки красненьким, чтобы можно было нормально Lisp код редактировать"))

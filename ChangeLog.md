@@ -6,6 +6,13 @@
 * Added shortcut C-c m to switch between js-mode and html-mode.
 * No more M-z for undo. Now it is zap-to-char again. Use standart C-/ for undo.
 
+0.4.0 (2015-09-07)
+==================
+
+* Load yasnippets only from `~/.emacs.d/snippets` directory.
+* Commented print in use-package function.
+* Use newer solarized theme (it works only in Emacs 24).
+
 0.3.0 (2015-03-02)
 ==================
 
