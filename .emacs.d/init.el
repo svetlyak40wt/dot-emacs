@@ -31,13 +31,11 @@
                       ;; fuzzy
                       ;; переход на строку в которой было последнее редактирование C-c C-\
                       goto-chg
-                      ;; раскрытие аббревиатур в шаблоны
-                      yasnippet
                       ;; без комментариев
                       markdown-mode
                       ;; работа с git
                       magit
-                      ;; использование сниппетов
+                      ;; раскрытие аббревиатур в шаблоны
                       yasnippet
                       ;; для пометки мест в файле и переходе между ними
                       bm
@@ -57,13 +55,6 @@
   (mapc 'use-package names))
 
 (use-packages my-packages)
-
-;; yasnippet configuration
-(require 'yasnippet)
-;; настраиваем yasnippet только на мои сниппеты
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"))
-(yas/load-directory "~/.emacs.d/snippets")
 
 ; раньше была такая тема
 ;(load-theme 'solarized-light t)
