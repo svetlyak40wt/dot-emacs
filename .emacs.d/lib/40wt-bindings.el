@@ -15,6 +15,15 @@
 ;; на этом биндинге ничего нет
 (global-set-key (kbd "C-c q") 'join-line)
 
+;; на этом вроде тоже
+(global-set-key (kbd "C-c g") 'magit-status)
+
+;; поиск и замена
+;; на этом биндинге ничего нет
+(global-set-key (kbd "C-c r s") 'replace-string)
+(global-set-key (kbd "C-c r r") 'replace-regexp)
+
+
 ;; ;; вместо zap-to-char
 ;; (global-set-key (kbd "M-z") 'undo)
 ;; ;; на этом биндинге ничего нет
