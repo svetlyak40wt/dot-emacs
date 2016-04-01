@@ -1,3 +1,8 @@
+## 0.7.0 (2016-04-01)
+
+* Allow to use 'dot' and 'http' inside org-babel.
+* Now use 'C-c g s' for git status and 'C-c g b' for git blame.
+
 ## 0.6.0 (2016-02-19)
 
 * Add bindings for magit-status (C-c g) and different string replacements (C-c r s, C-c r r).
