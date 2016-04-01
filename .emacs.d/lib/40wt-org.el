@@ -118,7 +118,10 @@ all tasks.org files into the list."
      (setq org-export-backends '(html md))
 
      (org-babel-do-load-languages 'org-babel-load-languages
-                                  '((sh . true) (python . true)))
+                                  '((sh . true)
+                                    (dot . true)
+                                    (python . true)
+                                    (http . true)))
 
      ;; Set to the location of your Org files on your local system
      (setq org-directory "~/txt")
