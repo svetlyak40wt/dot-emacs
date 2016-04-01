@@ -16,7 +16,8 @@
 (global-set-key (kbd "C-c q") 'join-line)
 
 ;; на этом вроде тоже
-(global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "C-c g s") 'magit-status)
+(global-set-key (kbd "C-c g b") 'magit-blame-mode)
 
 ;; поиск и замена
 ;; на этом биндинге ничего нет
