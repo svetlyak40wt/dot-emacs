@@ -1,11 +1,15 @@
+## 0.7.1 (2016-04-07)
+
+* Now  `C-c g b` calls `magit-blame` instead of `magit-blame-mode`.
+
 ## 0.7.0 (2016-04-01)
 
-* Allow to use 'dot' and 'http' inside org-babel.
-* Now use 'C-c g s' for git status and 'C-c g b' for git blame.
+* Allow to use `dot` and `http` inside `org-babel`.
+* Now use `C-c g s` for git status and `C-c g b` for git blame.
 
 ## 0.6.0 (2016-02-19)
 
-* Add bindings for magit-status (C-c g) and different string replacements (C-c r s, C-c r r).
+* Add bindings for magit-status (`C-c g`) and different string replacements (`C-c r s`, `C-c r r`).
 * Turn off notification from smart-mode-line about loading a color scheme.
 * No more special settings for yasnippets. It works out of the box.
 
@@ -13,8 +17,8 @@
 
 * Dynamic org-mode's todo files and some other settings for org-mode.
 * Change mode-line to smart-mode-line.
-* Added shortcut C-c m to switch between js-mode and html-mode.
-* No more M-z for undo. Now it is zap-to-char again. Use standart C-/ for undo.
+* Added shortcut `C-c m` to switch between js-mode and html-mode.
+* No more `M-z` for undo. Now it is zap-to-char again. Use standart `C-/` for undo.
 
 ## 0.4.0 (2015-09-07)
 

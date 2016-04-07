@@ -17,7 +17,7 @@
 
 ;; на этом вроде тоже
 (global-set-key (kbd "C-c g s") 'magit-status)
-(global-set-key (kbd "C-c g b") 'magit-blame-mode)
+(global-set-key (kbd "C-c g b") 'magit-blame)
 
 ;; поиск и замена
 ;; на этом биндинге ничего нет
