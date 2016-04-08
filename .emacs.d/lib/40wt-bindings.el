@@ -36,6 +36,10 @@
 (global-set-key (kbd "C-c 0") 'ace-jump-mode)
 (global-set-key (kbd "C-c C-\\") 'goto-last-change)
 
+;; one line scrolling with cmd-up and cmd-down
+(global-set-key (kbd "s-<up>") 'scroll-up-line)
+(global-set-key (kbd "s-<down>") 'scroll-down-line)
+
 ;; работа с закладками
 (global-set-key (kbd "C-c b") 'bm-toggle)
 (global-set-key (kbd "C-c <up>") 'bm-previous)

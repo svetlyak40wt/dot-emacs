@@ -1,3 +1,8 @@
+## 0.8.0 (2016-04-08)
+
+* New global bindings: `s-<up>` and `s-<down>` to scroll
+  whole window by line up and down.
+
 ## 0.7.1 (2016-04-07)
 
 * Now  `C-c g b` calls `magit-blame` instead of `magit-blame-mode`.
