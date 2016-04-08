@@ -37,8 +37,8 @@
 (global-set-key (kbd "C-c C-\\") 'goto-last-change)
 
 ;; one line scrolling with cmd-up and cmd-down
-(global-set-key (kbd "s-<up>") 'scroll-up-line)
-(global-set-key (kbd "s-<down>") 'scroll-down-line)
+(global-set-key (kbd "s-<up>") 'scroll-down-line)
+(global-set-key (kbd "s-<down>") 'scroll-up-line)
 
 ;; работа с закладками
 (global-set-key (kbd "C-c b") 'bm-toggle)

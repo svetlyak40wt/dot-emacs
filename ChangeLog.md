@@ -1,7 +1,7 @@
 ## 0.8.0 (2016-04-08)
 
 * New global bindings: `s-<up>` and `s-<down>` to scroll
-  whole window by line up and down.
+  whole window by line down and up respectively.
 
 ## 0.7.1 (2016-04-07)
 
