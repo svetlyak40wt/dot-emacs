@@ -65,6 +65,8 @@ all tasks.org files into the list."
      (define-key org-mode-map (kbd "C-c C-x C-k") 'org-cut-subtree)
 
      (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
+     (define-key org-mode-map (kbd "C-c TAB")
+       #'(lambda () (interactive) (expand-ticket-at-point t)))
 
      (define-key org-todo-state-map "x"
        #'(lambda nil (interactive) (org-todo "CANCELLED")))
