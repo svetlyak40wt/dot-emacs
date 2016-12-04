@@ -53,6 +53,10 @@ all tasks.org files into the list."
      ;; делаем так, чтобы в саджесте по файлам не появлялись архивные org-mode файлы
      (pushnew "\\.org_archive" ido-ignore-files)
 
+     ;; настраиваем ширину текста и включаем автоперенос
+     (setq-local fill-column 72)
+     (auto-fill-mode t)
+
      ; http://orgmode.org/manual/Fast-access-to-TODO-states.html#Fast-access-to-TODO-states
      (setq org-todo-keywords
            '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "PAUSED(p!)" "|" "DONE(d!)" "DEFERRED(f!)" "CANCELLED(c!)")))
