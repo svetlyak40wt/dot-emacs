@@ -12,8 +12,12 @@
    (quote
     ("http://feeds.feedburner.com/40-wt-firefly/all-posts" "http://svetlyak.ru" "https://www.upwork.com/jobs/rss?cn1[]=IT+%26+Networking&cn2[]=Network+%26+System+Administration&t[]=0&t[]=1&dur[]=0&dur[]=1&dur[]=13&dur[]=26&dur[]=none&wl[]=10&wl[]=30&wl[]=none&tba[]=0&tba[]=1-9&tba[]=10-&exp[]=1&exp[]=2&exp[]=3&amount[]=Min&amount[]=Max&q=docker&sortBy=s_ctime+desc")))
  '(fill-column 1000)
+ '(google-translate-default-source-language "en")
+ '(google-translate-default-target-language "ru")
  '(graphviz-dot-dot-program "/usr/local/bin/dot")
  '(htmlize-output-type (quote inline-css))
+ '(json-reformat:pretty-string\? t)
+ '(markdown-command "/usr/local/bin/markdown")
  '(menu-bar-mode nil)
  '(org-agenda-custom-commands
    (quote
@@ -88,7 +92,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#fcf4dc" :foreground "#52676f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "Menlo"))))
- '(org-agenda-done ((t (:foreground "brightcyan"))) t)
- '(org-scheduled ((t (:foreground "color-28"))) t)
- '(org-scheduled-today ((t (:foreground "color-28"))) t)
+ '(org-agenda-done ((t (:foreground "brightcyan"))))
+ '(org-scheduled ((t (:foreground "color-28"))))
+ '(org-scheduled-today ((t (:foreground "color-28"))))
  '(show-paren-match ((t (:background "#e56545" :foreground "#00cdcd" :inverse-video nil :underline nil :slant normal :weight bold))) nil "подсвечиваем скобочки красненьким, чтобы можно было нормально Lisp код редактировать"))

@@ -1,7 +1,7 @@
 ;;; from http://newartisans.com/2007/08/using-org-mode-as-a-day-planner/
 ;;; Описание хуков: http://orgmode.org/tmp/worg/org-configs/org-hooks.html
 
-(require 'org-install)
+;; (require 'org-install)
 (require 'async)
 
 (define-key mode-specific-map [?a] 'org-agenda)
@@ -28,7 +28,23 @@ all tasks.org files into the list."
 (defun 40wt-configure-org-mode-buffer-hook ()
   (let ((filename (buffer-file-name)))
     (if (s-ends-with-p "/tasks.org" filename)
-        (add-hook 'after-save-hook 'update-org-agenda-files t t))))
+        (add-hook 'after-save-hook 'update-org-agenda-files t t))
+
+    (when (and (file-exists-p "~/.org-feed")
+               ;; will run inbox update only if inbox.org was opened
+               ;; I do this only in one Emacs instance
+               (s-ends-with-p "/txt/inbox.org" filename))
+      
+      (message "Configuring a timer to update ~/txt/inbox.org")
+      
+      (load "~/.org-feed")
+      (setq org-feed-alist
+            (list (list "TODO Rss Input"
+                        org-inbox-rss-feed
+                        "~/txt/inbox.org" "INBOX")))
+      
+      ;; update inbox every 15 minutes
+      (run-with-idle-timer (* 15 60) 1 'org-feed-update-all))))
 
 
 (defun 40wt-configure-org-mode-agenda-buffer-hook ()
@@ -46,10 +62,10 @@ all tasks.org files into the list."
 (setq org-caldav-debug-level 2)
 
   
-
-
 (eval-after-load "org"
   '(progn
+     (message "ORG mode loaded, running setup code from 40wt-org.el")
+     
      ;; делаем так, чтобы в саджесте по файлам не появлялись архивные org-mode файлы
      (pushnew "\\.org_archive" ido-ignore-files)
 
@@ -57,7 +73,7 @@ all tasks.org files into the list."
      (setq-local fill-column 72)
      (auto-fill-mode t)
 
-     ; http://orgmode.org/manual/Fast-access-to-TODO-states.html#Fast-access-to-TODO-states
+                                        ; http://orgmode.org/manual/Fast-access-to-TODO-states.html#Fast-access-to-TODO-states
      (setq org-todo-keywords
            '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "PAUSED(p!)" "|" "DONE(d!)" "DEFERRED(f!)" "CANCELLED(c!)")))
 
@@ -67,8 +83,8 @@ all tasks.org files into the list."
      (define-prefix-command 'org-todo-state-map)
 
      (define-key org-mode-map "\C-cx" 'org-todo-state-map)
-     ;(define-key org-mode-map (kbd "C-c a l") 'org-agenda-list)
-     ;(define-key org-mode-map (kbd "C-c a t") 'org-timeline)
+                                        ;(define-key org-mode-map (kbd "C-c a l") 'org-agenda-list)
+                                        ;(define-key org-mode-map (kbd "C-c a t") 'org-timeline)
      (define-key org-mode-map (kbd "C-c C-x C-k") 'org-cut-subtree)
 
      (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
@@ -103,10 +119,10 @@ all tasks.org files into the list."
      (add-hook 'org-agenda-mode-hook '40wt-configure-org-mode-agenda-buffer-hook)
      (add-hook 'org-mode-hook '40wt-configure-org-mode-buffer-hook)
 
-     ; (define-key org-agenda-mode-map "\C-n" 'next-line)
-     ; (define-key org-agenda-keymap "\C-n" 'next-line)
-     ; (define-key org-agenda-mode-map "\C-p" 'previous-line)
-     ; (define-key org-agenda-keymap "\C-p" 'previous-line)
+                                        ; (define-key org-agenda-mode-map "\C-n" 'next-line)
+                                        ; (define-key org-agenda-keymap "\C-n" 'next-line)
+                                        ; (define-key org-agenda-mode-map "\C-p" 'previous-line)
+                                        ; (define-key org-agenda-keymap "\C-p" 'previous-line)
 
 
      ;; setup todo items clocking
@@ -115,14 +131,7 @@ all tasks.org files into the list."
      (org-clock-persistence-insinuate)
 
      ;; optional configuration of RSS source for inbox
-     (if (file-exists-p "~/.org-feed")
-         (progn (load "~/.org-feed")
-                (setq org-feed-alist
-                      (list (list "TODO Rss Input"
-                                  org-inbox-rss-feed
-                                  "~/txt/inbox.org" "INBOX")))
-                ;; update inbox every 15 minutes
-                (run-with-idle-timer (* 15 60) 1 'org-feed-update-all)))
+     
 
      (setq org-export-backends '(html md))
 
