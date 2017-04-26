@@ -44,7 +44,12 @@ all tasks.org files into the list."
                         "~/txt/inbox.org" "INBOX")))
       
       ;; update inbox every 15 minutes
-      (run-with-idle-timer (* 15 60) 1 'org-feed-update-all))))
+      (run-with-idle-timer (* 15 60) 1 'org-feed-update-all))
+
+
+    ;; Set text width and auto-wrapping
+    (setq-local fill-column 72)
+    (auto-fill-mode t)))
 
 
 (defun 40wt-configure-org-mode-agenda-buffer-hook ()
@@ -147,7 +152,12 @@ all tasks.org files into the list."
      ;; Set to the name of the file where new notes will be stored
      (setq org-mobile-inbox-for-pull "~/txt/mobile-inbox.org")
      ;; Set to <your Dropbox root directory>/MobileOrg.
-     (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")))
+     (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+
+     ;; Set clean mode when only items are indented and headers have
+     ;; only one star. Read more at:
+     ;; http://orgmode.org/guide/Clean-view.html#Clean-view
+     (setq org-startup-indented t)))
 
 ;; (require 'remember)
 
