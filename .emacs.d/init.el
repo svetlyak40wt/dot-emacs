@@ -66,6 +66,7 @@
 (defvar my-packages '(better-defaults
 		      color-theme-solarized
                       smart-mode-line
+                      hideshow
                       ;; mustache-mode
                       ;; python
                       ;; pymacs
@@ -119,7 +120,7 @@
 ; Now load all files from ~/.emacs.d/lib
 ; (mapc 'load (directory-files "~/.emacs.d/lib" t "^[^#].*el$"))
 (require-or-install 'init-loader)
-(setq init-loader-show-log-after-init t)
+(setq init-loader-show-log-after-init nil)
 (setq init-loader-default-regexp "\\(?:\\`\\)")
 (init-loader-load
  (expand-file-name "lib/" *emacs-config-directory*))

@@ -30,11 +30,16 @@
 ;; ;; на этом биндинге ничего нет
 ;; (global-set-key (kbd "C-c z") 'zap-to-char)
 
+
 ;; BEGIN используем то, на чем нет биндингов
 (global-set-key (kbd "C-c =") 'er/expand-region)
 (global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-c 0") 'ace-jump-mode)
 (global-set-key (kbd "C-c C-\\") 'goto-last-change)
+
+;; Кажется на C-c l ничего нет, ставим сюда быстрое переключение
+;; между окнами
+(global-set-key (kbd "C-c l") 'ace-window)
 
 ;; one line scrolling with cmd-up and cmd-down
 (global-set-key (kbd "s-<up>") 'scroll-down-line)

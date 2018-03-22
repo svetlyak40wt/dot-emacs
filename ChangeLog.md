@@ -1,3 +1,8 @@
+## 0.9.0 (2018-03-22)
+
+Use C-c l to switch windows using ACE.
+	
+
 ## 0.8.0 (2016-04-08)
 
 * New global bindings: `s-<up>` and `s-<down>` to scroll
