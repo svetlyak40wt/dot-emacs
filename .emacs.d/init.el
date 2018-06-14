@@ -132,3 +132,4 @@
 (let ((local-conf (expand-file-name ".local.el")))
   (if (file-exists-p local-conf)
       (load local-conf)))
+(put 'narrow-to-region 'disabled nil)

@@ -25,29 +25,29 @@
      ("c" todo "DONE|DEFERRED|CANCELLED" nil)
      ("w" todo "WAITING" nil)
      ("W" agenda ""
-          ((org-agenda-ndays 21)))
+      ((org-agenda-ndays 21)))
      ("A" agenda ""
-          ((org-agenda-skip-function
-            (lambda nil
-              (org-agenda-skip-entry-if
-               (quote notregexp)
-               "\\=.*\\[#A\\]")))
-           (org-agenda-ndays 1)
-           (org-agenda-overriding-header "Today's Priority #A tasks: ")))
+      ((org-agenda-skip-function
+        (lambda nil
+          (org-agenda-skip-entry-if
+           (quote notregexp)
+           "\\=.*\\[#A\\]")))
+       (org-agenda-ndays 1)
+       (org-agenda-overriding-header "Today's Priority #A tasks: ")))
      ("u" alltodo ""
-          ((org-agenda-skip-function
-            (lambda nil
-              (org-agenda-skip-entry-if
-               (quote scheduled)
-               (quote deadline)
-               (quote regexp)
-               "
+      ((org-agenda-skip-function
+        (lambda nil
+          (org-agenda-skip-entry-if
+           (quote scheduled)
+           (quote deadline)
+           (quote regexp)
+           "
 ]+>")))
-           (org-agenda-overriding-header "Unscheduled TODO entries: ")))
+       (org-agenda-overriding-header "Unscheduled TODO entries: ")))
      ("x" "Save to file" agenda ""
-          ((org-agenda-prefix-format "")
-           (org-agenda-ndays 1))
-          ("/Users/art/txt/agenda.html")))))
+      ((org-agenda-prefix-format "")
+       (org-agenda-ndays 1))
+      ("/Users/art/txt/agenda.html")))))
  '(org-agenda-ndays 7)
  '(org-agenda-prefix-format
    (quote
@@ -64,8 +64,8 @@
  '(org-capture-templates
    (quote
     (("t" "Add TODO item" entry
-          (file+headline "~/txt/inbox.org" "INBOX")
-          "* TODO %?"))))
+      (file+headline "~/txt/inbox.org" "INBOX")
+      "* TODO %?"))))
  '(org-columns-default-format
    "%70ITEM(Task) %15SCHEDULED %17Effort(Estimated Effort){:} %6CLOCKSUM")
  '(org-deadline-warning-days 14)
@@ -82,7 +82,7 @@
  '(org-sort-agenda-noeffort-is-high nil)
  '(package-selected-packages
    (quote
-    (lispy which-key sly hyperbole wgrep-helm yawiki-mode yaml-mode xah-fly-keys writeroom-mode web-mode w3 tern-auto-complete spaceline sotlisp smart-mode-line slime-company skewer-mode restclient relative-line-numbers realgud rainbow-delimiters persp-mode parinfer paredit pandoc-mode ox-yawiki ox-rst org-trello org-mobile-sync org-caldav olivetti ob-http nose mo-git-blame minimap markdown-mode magit list-utils layout-restore langtool keyfreq jsx-mode json-reformat json-mode js2-refactor jinja2-mode iy-go-to-char ipython init-loader iedit idomenu hy-mode htmlize html-to-markdown helm-projectile helm-company helm-ag graphviz-dot-mode goto-last-change goto-chg google-translate go-mode git-blame fuzzy flymake-python-pyflakes flymake-cursor feature-mode f expand-region emmet-mode elpy elfeed ein ecb docker-tramp corral common-lisp-snippets column-enforce-mode color-theme-wombat color-theme-tango color-theme-solarized color-theme-github color-theme-emacs-revert-theme color-theme-active bm bitly better-defaults airline-themes ag ace-jump-mode)))
+    (popwin lispy which-key sly hyperbole wgrep-helm yawiki-mode yaml-mode xah-fly-keys writeroom-mode web-mode w3 tern-auto-complete spaceline sotlisp smart-mode-line slime-company skewer-mode restclient relative-line-numbers realgud rainbow-delimiters persp-mode parinfer paredit pandoc-mode ox-yawiki ox-rst org-trello org-mobile-sync org-caldav olivetti ob-http nose mo-git-blame minimap markdown-mode magit list-utils layout-restore langtool keyfreq jsx-mode json-reformat json-mode js2-refactor jinja2-mode iy-go-to-char ipython init-loader iedit idomenu hy-mode htmlize html-to-markdown helm-projectile helm-company helm-ag graphviz-dot-mode goto-last-change goto-chg google-translate go-mode git-blame fuzzy flymake-python-pyflakes flymake-cursor feature-mode f expand-region emmet-mode elpy elfeed ein ecb docker-tramp corral common-lisp-snippets column-enforce-mode color-theme-wombat color-theme-tango color-theme-solarized color-theme-github color-theme-emacs-revert-theme color-theme-active bm bitly better-defaults airline-themes ag ace-jump-mode)))
  '(pyvenv-activate nil)
  '(safe-local-variable-values (quote ((Package . CCL))))
  '(send-mail-function (quote sendmail-send-it))
