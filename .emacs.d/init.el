@@ -12,6 +12,8 @@
 (add-to-list 'package-archives
              '("MELPA" . "http://melpa.milkbox.net/packages/") t)
 
+;; (setq package-archives '(("elpy" . "https://jorgenschaefer.github.io/packages/")))
+
 
 
 (defun package-install-with-refresh (package)
@@ -89,6 +91,7 @@
                       yasnippet
                       ;; для пометки мест в файле и переходе между ними
                       bm
+                      ;; helm-swoop
                       )
   "A list of packages to ensure are installed at launch.")
 
@@ -128,6 +131,12 @@
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+
+;; чтобы swoop не начинал искать по тому слову, на котором случайно оказался курсор
+;; (setq helm-swoop-pre-input-function
+;;       (lambda ()
+;;         nil))
 
 (let ((local-conf (expand-file-name ".local.el")))
   (if (file-exists-p local-conf)
