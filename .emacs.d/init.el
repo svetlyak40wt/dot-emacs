@@ -142,3 +142,13 @@
   (if (file-exists-p local-conf)
       (load local-conf)))
 (put 'narrow-to-region 'disabled nil)
+
+
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+
+;; Helm is overhelming!
+(helm-mode)
+(helm-projectile-on)
