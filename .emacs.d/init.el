@@ -109,6 +109,9 @@
 
 (use-packages my-packages)
 
+;; better defaults does not work without that
+(require 'better-defaults)
+
 ; раньше была такая тема
 ;(load-theme 'solarized-light t)
 ;; https://github.com/sellout/emacs-color-theme-solarized
