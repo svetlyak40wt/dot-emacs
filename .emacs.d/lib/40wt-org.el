@@ -78,9 +78,10 @@ all tasks.org files into the list."
      (setq-local fill-column 72)
      (auto-fill-mode t)
 
-                                        ; http://orgmode.org/manual/Fast-access-to-TODO-states.html#Fast-access-to-TODO-states
+     ;; http://orgmode.org/manual/Fast-access-to-TODO-states.html#Fast-access-to-TODO-states
+     ;; https://orgmode.org/guide/Multi_002dstate-workflows.html
      (setq org-todo-keywords
-           '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "PAUSED(p!)" "|" "DONE(d!)" "DEFERRED(f!)" "CANCELLED(c!)")))
+           '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "PAUSED(p!)" "|" "DONE(d!)" "DELEGATED(f!)" "CANCELLED(c!)")))
 
      (setq org-global-properties
            '(("Effort_ALL". "0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")))
@@ -91,6 +92,9 @@ all tasks.org files into the list."
                                         ;(define-key org-mode-map (kbd "C-c a l") 'org-agenda-list)
                                         ;(define-key org-mode-map (kbd "C-c a t") 'org-timeline)
      (define-key org-mode-map (kbd "C-c C-x C-k") 'org-cut-subtree)
+     
+     (define-key org-mode-map (kbd "C-c i") 'org-table-insert-row)
+     (define-key org-mode-map (kbd "C-c k") 'org-table-kill-row)
 
      (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
      (define-key org-mode-map (kbd "C-c TAB")
@@ -140,11 +144,11 @@ all tasks.org files into the list."
 
      (setq org-export-backends '(html md))
 
-     (org-babel-do-load-languages 'org-babel-load-languages
-                                  '((sh . true)
-                                    (dot . true)
-                                    (python . true)
-                                    (http . true)))
+     ;; Пока закомментировал, похоже что некоторые из этих модулей надо ставить отельно
+     ;;(org-babel-do-load-languages 'org-babel-load-languages
+     ;;                             '((dot . true)
+     ;;                               (python . true)
+     ;;                               (http . true)))
 
      ;; Set to the location of your Org files on your local system
      (setq org-directory "~/txt")

@@ -132,6 +132,10 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+;; Для поддержки лигатур
+;; https://www.reddit.com/r/emacs/comments/742jnv/is_ligature_supported_in_emacs/
+(if (fboundp 'mac-auto-operator-composition-mode)
+    (mac-auto-operator-composition-mode))
 
 ;; чтобы swoop не начинал искать по тому слову, на котором случайно оказался курсор
 ;; (setq helm-swoop-pre-input-function
@@ -142,3 +146,13 @@
   (if (file-exists-p local-conf)
       (load local-conf)))
 (put 'narrow-to-region 'disabled nil)
+(put 'set-goal-column 'disabled nil)
+
+
+;; Эти настройки должны сделать редактирование удалённых файлов
+;; пошустрее. Взято отсюда:
+;; http://gleek.github.io/blog/2017/04/11/editing-remote-code-with-emacs/
+(setq tramp-auto-save-directory "~/tmp/tramp/")
+;; Я проверил скриптом, который в доке про tramp-chunksize, и у меня
+;; он останавливался на цифре 1000, что вроде как плохо.
+(setq tramp-chunksize 900)

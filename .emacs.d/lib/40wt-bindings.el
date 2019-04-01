@@ -6,6 +6,12 @@
 (global-set-key (kbd "C-w") 'backward-kill-word)
 ;; вместо кучи команд начинающихся с kmacro-
 (global-set-key (kbd "C-x C-k") 'kill-region)
+
+;; сделаем чтобы в графическом емаксе работали Cmd-C Cmd-V
+(setq mac-command-modifier 'super)
+(global-set-key (kbd "s-c") 'kill-ring-save)
+(global-set-key (kbd "s-v") 'yank)
+
 ;; вместо indent-new-comment-line
 (global-set-key (kbd "M-j")
                 (lambda ()

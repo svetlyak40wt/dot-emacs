@@ -17,6 +17,7 @@
  '(graphviz-dot-dot-program "/usr/local/bin/dot")
  '(htmlize-output-type (quote inline-css))
  '(json-reformat:pretty-string\? t)
+ '(mac-option-modifier (quote meta))
  '(markdown-command "/usr/local/bin/markdown")
  '(menu-bar-mode nil)
  '(org-agenda-custom-commands
@@ -82,7 +83,7 @@
  '(org-sort-agenda-noeffort-is-high nil)
  '(package-selected-packages
    (quote
-    (ace-jump-mode ag airline-themes auto-complete better-defaults bitly bm color-theme-active color-theme-emacs-revert-theme color-theme-github color-theme-solarized color-theme-tango color-theme-wombat column-enforce-mode common-lisp-snippets corral docker-tramp ecb ein elfeed elpy emmet-mode expand-region f feature-mode flymake-cursor flymake-python-pyflakes fuzzy git-blame go-mode google-translate goto-chg goto-last-change graphviz-dot-mode helm-ag helm-company helm-projectile helm-swoop html-to-markdown htmlize hy-mode hyperbole idomenu iedit init-loader ipython iy-go-to-char jinja2-mode js2-refactor json-mode json-reformat jsx-mode keyfreq langtool layout-restore lispy list-utils magit markdown-mode minimap mo-git-blame nose ob-http olivetti org-caldav org-mobile-sync org-trello ox-rst ox-yawiki pandoc-mode paredit parinfer persp-mode popwin rainbow-delimiters realgud relative-line-numbers restclient skewer-mode slime-company sly smart-mode-line sotlisp spaceline tern-auto-complete w3 web-mode wgrep-helm which-key writeroom-mode xah-fly-keys yaml-mode yawiki-mode)))
+    (pony-mode django-mode slime ace-jump-mode ag airline-themes auto-complete better-defaults bitly bm color-theme-active color-theme-emacs-revert-theme color-theme-github color-theme-solarized color-theme-tango color-theme-wombat column-enforce-mode common-lisp-snippets corral docker-tramp ecb ein elfeed elpy emmet-mode expand-region f feature-mode flymake-cursor flymake-python-pyflakes fuzzy git-blame go-mode google-translate goto-chg goto-last-change graphviz-dot-mode helm-ag helm-company helm-projectile helm-swoop html-to-markdown htmlize hy-mode hyperbole idomenu iedit init-loader iy-go-to-char jinja2-mode js2-refactor json-mode json-reformat jsx-mode keyfreq langtool layout-restore lispy list-utils magit markdown-mode minimap mo-git-blame nose ob-http olivetti org-caldav org-mobile-sync org-trello ox-rst ox-yawiki pandoc-mode paredit parinfer persp-mode popwin rainbow-delimiters realgud relative-line-numbers restclient skewer-mode slime-company sly smart-mode-line sotlisp spaceline tern-auto-complete w3 web-mode wgrep-helm which-key writeroom-mode xah-fly-keys yaml-mode yawiki-mode)))
  '(pyvenv-activate nil)
  '(safe-local-variable-values (quote ((Package . CCL))))
  '(send-mail-function (quote sendmail-send-it))
@@ -95,8 +96,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#fcf4dc" :foreground "#52676f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "Menlo"))))
+ '(default ((t (:inherit nil :stipple nil :background "#fcf4dc" :foreground "#52676f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 200 :width normal :foundry "nil" :family "PragmataPro"))))
  '(org-agenda-done ((t (:foreground "brightcyan"))))
+ '(org-default ((t (:family "PragmataPro Mono"))))
+ '(org-hide ((t (:foreground "#fcf4dc" :family "PragmataPro Mono"))))
  '(org-scheduled ((t (:foreground "color-28"))))
  '(org-scheduled-today ((t (:foreground "color-28"))))
+ '(outline-3 ((t (:foreground "#b58900"))))
  '(show-paren-match ((t (:background "#e56545" :foreground "#00cdcd" :inverse-video nil :underline nil :slant normal :weight bold))) nil "подсвечиваем скобочки красненьким, чтобы можно было нормально Lisp код редактировать"))
