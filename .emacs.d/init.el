@@ -109,6 +109,9 @@
 
 (use-packages my-packages)
 
+;; better defaults does not work without that
+(require 'better-defaults)
+
 ; раньше была такая тема
 ;(load-theme 'solarized-light t)
 ;; https://github.com/sellout/emacs-color-theme-solarized
@@ -146,6 +149,7 @@
   (if (file-exists-p local-conf)
       (load local-conf)))
 (put 'narrow-to-region 'disabled nil)
+
 (put 'set-goal-column 'disabled nil)
 
 
@@ -156,3 +160,14 @@
 ;; Я проверил скриптом, который в доке про tramp-chunksize, и у меня
 ;; он останавливался на цифре 1000, что вроде как плохо.
 (setq tramp-chunksize 900)
+
+
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+
+;; Helm is overhelming!
+(helm-mode)
+(helm-projectile-on)
+
