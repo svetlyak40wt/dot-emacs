@@ -177,5 +177,9 @@ all tasks.org files into the list."
 ;(define-key global-map [(control meta ?r)] 'remember)
 (define-key global-map (kbd "C-M-r") 'org-capture)
 
+;; Macroses
+(fset '40wt-today-task
+   [?\C-c ?\C-t ?t ?\C-c ?\C-s return ?\C-a down down ?\C-a])
+(define-key org-mode-map (kbd "C-t") '40wt-today-task)
 
 (provide '40wt-org)
