@@ -7,7 +7,8 @@
 
 
 (defun update-org-agenda-files ()
-  (add-to-list 'org-agenda-files buffer-file-name))
+  ;; (add-to-list 'org-agenda-files buffer-file-name)
+  )
 
 
 (defun set-org-agenda-files ()
@@ -16,11 +17,15 @@ all tasks.org files into the list."
   (require 'f)
   (require 's)
 
-  (setq org-agenda-files
-        (f-entries org-directory
-                   (lambda (filename)
-                     (s-ends-with-p "/tasks.org" filename))
-                   t)))
+
+  (setq org-agenda-files (list "~/txt/goals.org"))
+
+  ;; (setq org-agenda-files
+  ;;       (f-entries org-directory
+  ;;                  (lambda (filename)
+  ;;                    (s-ends-with-p "/tasks.org" filename))
+  ;;                  t))
+  )
 
 
 (defun 40wt-configure-org-mode-buffer-hook ()
