@@ -26,32 +26,30 @@
      ("c" todo "DONE|DEFERRED|CANCELLED" nil)
      ("w" todo "WAITING" nil)
      ("W" agenda ""
-      ((org-agenda-ndays 21)))
+          ((org-agenda-ndays 21)))
      ("A" agenda ""
-      ((org-agenda-skip-function
-        (lambda nil
-          (org-agenda-skip-entry-if
-           (quote notregexp)
-           "\\=.*\\[#A\\]")))
-       (org-agenda-ndays 1)
-       (org-agenda-overriding-header "Today's Priority #A tasks: ")))
+          ((org-agenda-skip-function
+            (lambda nil
+              (org-agenda-skip-entry-if
+               (quote notregexp)
+               "\\=.*\\[#A\\]")))
+           (org-agenda-ndays 1)
+           (org-agenda-overriding-header "Today's Priority #A tasks: ")))
      ("u" alltodo ""
-      ((org-agenda-skip-function
-        (lambda nil
-          (org-agenda-skip-entry-if
-           (quote scheduled)
-           (quote deadline)
-           (quote regexp)
-           "
+          ((org-agenda-skip-function
+            (lambda nil
+              (org-agenda-skip-entry-if
+               (quote scheduled)
+               (quote deadline)
+               (quote regexp)
+               "
 ]+>")))
-       (org-agenda-overriding-header "Unscheduled TODO entries: ")))
+           (org-agenda-overriding-header "Unscheduled TODO entries: ")))
      ("x" "Save to file" agenda ""
-      ((org-agenda-prefix-format "")
-       (org-agenda-ndays 1))
-      ("/Users/art/txt/agenda.html")))))
- '(org-agenda-files
-   (quote
-    ("~/Dropbox/txt/work/hr.org" "/Users/art/txt/education/tasks.org" "/Users/art/txt/education/startups/tasks.org" "/Users/art/txt/life/tasks.org" "/Users/art/txt/life/auto/tasks.org" "/Users/art/txt/life/auto/forester/tasks.org" "/Users/art/txt/life/auto/jimny/tasks.org" "/Users/art/txt/life/auto/pajero/tasks.org" "/Users/art/txt/life/deti/tasks.org" "/Users/art/txt/life/dom/tasks.org" "/Users/art/txt/life/finances/tasks.org" "/Users/art/txt/life/sobaka/tasks.org" "/Users/art/txt/life/test-razdel/tasks.org" "/Users/art/txt/life/test-razdel/another-test/tasks.org" "/Users/art/txt/projects/40ants/tasks.org" "/Users/art/txt/projects/40forks/tasks.org" "/Users/art/txt/projects/allmychanges/tasks.org" "/Users/art/txt/projects/certificator/tasks.org" "/Users/art/txt/projects/dbaas/tasks.org" "/Users/art/txt/projects/dev.svetlyak.ru/tasks.org" "/Users/art/txt/projects/devops/tasks.org" "/Users/art/txt/projects/hacrm/tasks.org" "/Users/art/txt/projects/opensource/tasks.org" "/Users/art/txt/projects/part-price.ru/tasks.org" "/Users/art/txt/projects/pdd/tasks.org" "/Users/art/txt/projects/pip/tasks.org" "/Users/art/txt/projects/skazorama/tasks.org" "/Users/art/txt/projects/sprinter/tasks.org" "/Users/art/txt/projects/ultralisp/tasks.org" "/Users/art/txt/projects/weblocks/tasks.org" "/Users/art/txt/projects/workspace/tasks.org" "/Users/art/txt/projects/yamb/tasks.org" "/Users/art/txt/work/tasks.org")))
+          ((org-agenda-prefix-format "")
+           (org-agenda-ndays 1))
+          ("/Users/art/txt/agenda.html")))))
+ '(org-agenda-files (quote ("/Users/art/txt/goals.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-prefix-format
    (quote
@@ -68,8 +66,8 @@
  '(org-capture-templates
    (quote
     (("t" "Add TODO item" entry
-      (file+headline "~/txt/inbox.org" "INBOX")
-      "* TODO %?"))))
+          (file+headline "~/txt/inbox.org" "INBOX")
+          "* TODO %?"))))
  '(org-columns-default-format
    "%70ITEM(Task) %15SCHEDULED %17Effort(Estimated Effort){:} %6CLOCKSUM")
  '(org-deadline-warning-days 14)
@@ -99,8 +97,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default (;; (t (:inherit nil :stipple nil :background "#fcf4dc" :foreground "#52676f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 200 :width normal :foundry "nil" :family "PragmataPro"))
-            (t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 200 :width normal :foundry "nil" :family "PragmataPro"))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 200 :width normal :foundry "nil" :family "PragmataPro"))))
  '(org-agenda-done ((t (:foreground "brightcyan"))))
  '(org-default ((t (:family "PragmataPro Mono"))))
  '(org-hide ((t (:foreground "#fcf4dc" :family "PragmataPro Mono"))))
