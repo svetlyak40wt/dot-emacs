@@ -74,7 +74,8 @@ all tasks.org files into the list."
      (message "ORG mode loaded, running setup code from 40wt-org.el")
      
      ;; делаем так, чтобы в саджесте по файлам не появлялись архивные org-mode файлы
-     (pushnew "\\.org_archive" ido-ignore-files)
+     (when (boundp 'ido-ignore-files)
+       (pushnew "\\.org_archive" ido-ignore-files))
 
      ;; настраиваем ширину текста и включаем автоперенос
      (setq-local fill-column 72)

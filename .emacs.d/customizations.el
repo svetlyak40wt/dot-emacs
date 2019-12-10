@@ -17,9 +17,9 @@
  '(graphviz-dot-dot-program "/usr/local/bin/dot")
  '(htmlize-output-type (quote inline-css))
  '(json-reformat:pretty-string\? t)
- '(mac-option-modifier (quote meta))
  '(markdown-command "/usr/local/bin/markdown")
  '(menu-bar-mode nil)
+ '(ns-alternate-modifier (quote meta))
  '(org-agenda-custom-commands
    (quote
     (("d" todo "DELEGATED" nil)
@@ -49,6 +49,9 @@
       ((org-agenda-prefix-format "")
        (org-agenda-ndays 1))
       ("/Users/art/txt/agenda.html")))))
+ '(org-agenda-files
+   (quote
+    ("~/Dropbox/txt/work/hr.org" "/Users/art/txt/education/tasks.org" "/Users/art/txt/education/startups/tasks.org" "/Users/art/txt/life/tasks.org" "/Users/art/txt/life/auto/tasks.org" "/Users/art/txt/life/auto/forester/tasks.org" "/Users/art/txt/life/auto/jimny/tasks.org" "/Users/art/txt/life/auto/pajero/tasks.org" "/Users/art/txt/life/deti/tasks.org" "/Users/art/txt/life/dom/tasks.org" "/Users/art/txt/life/finances/tasks.org" "/Users/art/txt/life/sobaka/tasks.org" "/Users/art/txt/life/test-razdel/tasks.org" "/Users/art/txt/life/test-razdel/another-test/tasks.org" "/Users/art/txt/projects/40ants/tasks.org" "/Users/art/txt/projects/40forks/tasks.org" "/Users/art/txt/projects/allmychanges/tasks.org" "/Users/art/txt/projects/certificator/tasks.org" "/Users/art/txt/projects/dbaas/tasks.org" "/Users/art/txt/projects/dev.svetlyak.ru/tasks.org" "/Users/art/txt/projects/devops/tasks.org" "/Users/art/txt/projects/hacrm/tasks.org" "/Users/art/txt/projects/opensource/tasks.org" "/Users/art/txt/projects/part-price.ru/tasks.org" "/Users/art/txt/projects/pdd/tasks.org" "/Users/art/txt/projects/pip/tasks.org" "/Users/art/txt/projects/skazorama/tasks.org" "/Users/art/txt/projects/sprinter/tasks.org" "/Users/art/txt/projects/ultralisp/tasks.org" "/Users/art/txt/projects/weblocks/tasks.org" "/Users/art/txt/projects/workspace/tasks.org" "/Users/art/txt/projects/yamb/tasks.org" "/Users/art/txt/work/tasks.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-prefix-format
    (quote
@@ -83,7 +86,7 @@
  '(org-sort-agenda-noeffort-is-high nil)
  '(package-selected-packages
    (quote
-    (foo yas pony-mode django-mode slime ace-jump-mode ag airline-themes auto-complete better-defaults bitly bm color-theme-active color-theme-emacs-revert-theme color-theme-github color-theme-solarized color-theme-tango color-theme-wombat column-enforce-mode common-lisp-snippets corral docker-tramp ecb ein elfeed elpy emmet-mode expand-region f feature-mode flymake-cursor flymake-python-pyflakes fuzzy git-blame go-mode google-translate goto-chg goto-last-change graphviz-dot-mode helm-ag helm-company helm-projectile helm-swoop html-to-markdown htmlize hy-mode hyperbole idomenu iedit init-loader iy-go-to-char jinja2-mode js2-refactor json-mode json-reformat jsx-mode keyfreq langtool layout-restore lispy list-utils magit markdown-mode minimap mo-git-blame nose ob-http olivetti org-caldav org-mobile-sync org-trello ox-rst ox-yawiki pandoc-mode paredit parinfer persp-mode popwin rainbow-delimiters realgud relative-line-numbers restclient skewer-mode slime-company sly smart-mode-line sotlisp spaceline tern-auto-complete w3 web-mode wgrep-helm which-key writeroom-mode xah-fly-keys yaml-mode yawiki-mode)))
+    (realgud-ipdb ipython-shell-send flycheck-pycheckers ox-pandoc flycheck-julia julia-mode julia-repl helm-ag perspective foo yas pony-mode django-mode slime ace-jump-mode ag airline-themes auto-complete better-defaults bitly bm color-theme-active color-theme-emacs-revert-theme color-theme-github color-theme-solarized color-theme-tango color-theme-wombat column-enforce-mode common-lisp-snippets corral docker-tramp ecb ein elfeed elpy emmet-mode expand-region f feature-mode flymake-cursor flymake-python-pyflakes fuzzy git-blame go-mode google-translate goto-chg goto-last-change graphviz-dot-mode helm-company helm-projectile helm-swoop html-to-markdown htmlize hy-mode hyperbole idomenu iedit init-loader iy-go-to-char jinja2-mode js2-refactor json-mode json-reformat jsx-mode keyfreq langtool layout-restore lispy list-utils magit markdown-mode minimap mo-git-blame nose ob-http olivetti org-caldav org-mobile-sync org-trello ox-rst ox-yawiki pandoc-mode paredit parinfer persp-mode popwin rainbow-delimiters realgud relative-line-numbers restclient skewer-mode slime-company sly smart-mode-line sotlisp spaceline tern-auto-complete w3 web-mode wgrep-helm which-key writeroom-mode xah-fly-keys yaml-mode yawiki-mode)))
  '(pyvenv-activate nil)
  '(safe-local-variable-values (quote ((Package . CCL))))
  '(send-mail-function (quote sendmail-send-it))
@@ -96,7 +99,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#fcf4dc" :foreground "#52676f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 200 :width normal :foundry "nil" :family "PragmataPro"))))
+ '(default (;; (t (:inherit nil :stipple nil :background "#fcf4dc" :foreground "#52676f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 200 :width normal :foundry "nil" :family "PragmataPro"))
+            (t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 200 :width normal :foundry "nil" :family "PragmataPro"))))
  '(org-agenda-done ((t (:foreground "brightcyan"))))
  '(org-default ((t (:family "PragmataPro Mono"))))
  '(org-hide ((t (:foreground "#fcf4dc" :family "PragmataPro Mono"))))
