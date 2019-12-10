@@ -99,10 +99,6 @@ all tasks.org files into the list."
      (define-key org-mode-map (kbd "C-c i") 'org-table-insert-row)
      (define-key org-mode-map (kbd "C-c k") 'org-table-kill-row)
 
-     (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
-     (define-key org-mode-map (kbd "C-c TAB")
-       #'(lambda () (interactive) (expand-ticket-at-point t)))
-
      (define-key org-todo-state-map "x"
        #'(lambda nil (interactive) (org-todo "CANCELLED")))
      (define-key org-todo-state-map "d"
