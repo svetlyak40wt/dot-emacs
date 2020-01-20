@@ -91,6 +91,9 @@ all tasks.org files into the list."
 
      (define-prefix-command 'org-todo-state-map)
 
+     ;; чтобы айтемы с приоритетом  B поднимались в верх списка.
+     (setf org-default-priority org-lowest-priority)
+    
      (define-key org-mode-map "\C-cx" 'org-todo-state-map)
                                         ;(define-key org-mode-map (kbd "C-c a l") 'org-agenda-list)
                                         ;(define-key org-mode-map (kbd "C-c a t") 'org-timeline)
