@@ -128,8 +128,10 @@ all tasks.org files into the list."
      
     (define-key org-mode-map (kbd "C-c i") 'org-table-insert-row)
     (define-key org-mode-map (kbd "C-c k") 'org-table-kill-row)
+    (define-key org-mode-map (kbd "C-c k") 'org-table-kill-row)
 
     (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
+
     (define-key org-mode-map (kbd "C-c TAB")
      #'(lambda () (interactive) (expand-ticket-at-point t)))
 
@@ -160,12 +162,6 @@ all tasks.org files into the list."
     ;; http://sachachua.com/blog/2013/01/emacs-org-task-related-keyboard-shortcuts-agenda/
     (add-hook 'org-agenda-mode-hook '40wt-configure-org-mode-agenda-buffer-hook)
     (add-hook 'org-mode-hook '40wt-configure-org-mode-buffer-hook)
-
-                                        ; (define-key org-agenda-mode-map "\C-n" 'next-line)
-                                        ; (define-key org-agenda-keymap "\C-n" 'next-line)
-                                        ; (define-key org-agenda-mode-map "\C-p" 'previous-line)
-                                        ; (define-key org-agenda-keymap "\C-p" 'previous-line)
-
 
     ;; setup todo items clocking
     ;; http://orgmode.org/manual/Clocking-work-time.html#Clocking-work-time
