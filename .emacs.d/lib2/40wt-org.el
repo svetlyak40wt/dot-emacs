@@ -67,6 +67,12 @@ all tasks.org files into the list."
   (setq org-randomnote-candidates '("~/txt/workaround.org")))
 
 
+(use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook 'org-bullets-mode))
+
+
 (use-package org-super-agenda
     :ensure t
     :config
