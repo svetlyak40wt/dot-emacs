@@ -59,12 +59,23 @@ all tasks.org files into the list."
   (define-key org-agenda-mode-map "1" '40wt/next-week)
   (define-key org-agenda-mode-map "2" '40wt/clone-schedule))
 
+(use-package org
+    :ensure t
+    :init
+    (setq org-use-speed-commands t
+          org-hide-emphasis-markers t
+          ;; TODO: Попробовать как работает completion в refile
+          ;; org-completion-use-ido t
+          ;; org-outline-path-complete-in-steps nil
+          org-src-fontify-natively t ;; Pretty code blocks
+          org-src-tab-acts-natively t
+          org-confirm-babel-evaluate nil))
 
 (use-package org-randomnote
-  :ensure t
-  :bind ("C-c C-x r" . org-randomnote)
-  :config
-  (setq org-randomnote-candidates '("~/txt/workaround.org")))
+    :ensure t
+    :bind ("C-c C-x r" . org-randomnote)
+    :config
+    (setq org-randomnote-candidates '("~/txt/workaround.org")))
 
 
 (use-package org-bullets
@@ -136,10 +147,11 @@ all tasks.org files into the list."
     (define-key org-mode-map (kbd "C-c k") 'org-table-kill-row)
     (define-key org-mode-map (kbd "C-c k") 'org-table-kill-row)
 
-    (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
+    ;; Надо найти исходник где определяется эта функция
+    ;; (add-hook 'org-ctrl-c-ctrl-c-hook 'expand-ticket-at-point)
 
-    (define-key org-mode-map (kbd "C-c TAB")
-     #'(lambda () (interactive) (expand-ticket-at-point t)))
+    ;; (define-key org-mode-map (kbd "C-c TAB")
+    ;;  #'(lambda () (interactive) (expand-ticket-at-point t)))
 
     (define-key org-todo-state-map "x"
      #'(lambda nil (interactive) (org-todo "CANCELLED")))
@@ -180,10 +192,10 @@ all tasks.org files into the list."
     (setq org-export-backends '(html md))
 
     ;; Пока закомментировал, похоже что некоторые из этих модулей надо ставить отельно
-    ;;(org-babel-do-load-languages 'org-babel-load-languages
-    ;;                             '((dot . true)
-    ;;                               (python . true)
-    ;;                               (http . true)))
+    (org-babel-do-load-languages 'org-babel-load-languages
+                                '((dot . true)
+                                  (python . true)
+                                  (shell . true)))
 
     ;; Set to the location of your Org files on your local system
     (setq org-directory "~/txt")
