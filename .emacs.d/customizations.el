@@ -26,29 +26,29 @@
      ("c" todo "DONE|DEFERRED|CANCELLED" nil)
      ("w" todo "WAITING" nil)
      ("W" agenda ""
-          ((org-agenda-ndays 21)))
+      ((org-agenda-ndays 21)))
      ("A" agenda ""
-          ((org-agenda-skip-function
-            (lambda nil
-              (org-agenda-skip-entry-if
-               (quote notregexp)
-               "\\=.*\\[#A\\]")))
-           (org-agenda-ndays 1)
-           (org-agenda-overriding-header "Today's Priority #A tasks: ")))
+      ((org-agenda-skip-function
+        (lambda nil
+          (org-agenda-skip-entry-if
+           (quote notregexp)
+           "\\=.*\\[#A\\]")))
+       (org-agenda-ndays 1)
+       (org-agenda-overriding-header "Today's Priority #A tasks: ")))
      ("u" alltodo ""
-          ((org-agenda-skip-function
-            (lambda nil
-              (org-agenda-skip-entry-if
-               (quote scheduled)
-               (quote deadline)
-               (quote regexp)
-               "
+      ((org-agenda-skip-function
+        (lambda nil
+          (org-agenda-skip-entry-if
+           (quote scheduled)
+           (quote deadline)
+           (quote regexp)
+           "
 ]+>")))
-           (org-agenda-overriding-header "Unscheduled TODO entries: ")))
+       (org-agenda-overriding-header "Unscheduled TODO entries: ")))
      ("x" "Save to file" agenda ""
-          ((org-agenda-prefix-format "")
-           (org-agenda-ndays 1))
-          ("/Users/art/txt/agenda.html")))))
+      ((org-agenda-prefix-format "")
+       (org-agenda-ndays 1))
+      ("/Users/art/txt/agenda.html")))))
  '(org-agenda-files (quote ("/Users/art/txt/goals.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-prefix-format
@@ -66,8 +66,8 @@
  '(org-capture-templates
    (quote
     (("t" "Add TODO item" entry
-          (file+headline "~/txt/inbox.org" "INBOX")
-          "* TODO %?"))))
+      (file+headline "~/txt/inbox.org" "INBOX")
+      "* TODO %?"))))
  '(org-columns-default-format
    "%70ITEM(Task) %15SCHEDULED %17Effort(Estimated Effort){:} %6CLOCKSUM")
  '(org-deadline-warning-days 14)
