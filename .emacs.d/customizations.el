@@ -26,29 +26,29 @@
      ("c" todo "DONE|DEFERRED|CANCELLED" nil)
      ("w" todo "WAITING" nil)
      ("W" agenda ""
-      ((org-agenda-ndays 21)))
+          ((org-agenda-ndays 21)))
      ("A" agenda ""
-      ((org-agenda-skip-function
-        (lambda nil
-          (org-agenda-skip-entry-if
-           (quote notregexp)
-           "\\=.*\\[#A\\]")))
-       (org-agenda-ndays 1)
-       (org-agenda-overriding-header "Today's Priority #A tasks: ")))
+          ((org-agenda-skip-function
+            (lambda nil
+              (org-agenda-skip-entry-if
+               (quote notregexp)
+               "\\=.*\\[#A\\]")))
+           (org-agenda-ndays 1)
+           (org-agenda-overriding-header "Today's Priority #A tasks: ")))
      ("u" alltodo ""
-      ((org-agenda-skip-function
-        (lambda nil
-          (org-agenda-skip-entry-if
-           (quote scheduled)
-           (quote deadline)
-           (quote regexp)
-           "
+          ((org-agenda-skip-function
+            (lambda nil
+              (org-agenda-skip-entry-if
+               (quote scheduled)
+               (quote deadline)
+               (quote regexp)
+               "
 ]+>")))
-       (org-agenda-overriding-header "Unscheduled TODO entries: ")))
+           (org-agenda-overriding-header "Unscheduled TODO entries: ")))
      ("x" "Save to file" agenda ""
-      ((org-agenda-prefix-format "")
-       (org-agenda-ndays 1))
-      ("/Users/art/txt/agenda.html")))))
+          ((org-agenda-prefix-format "")
+           (org-agenda-ndays 1))
+          ("/Users/art/txt/agenda.html")))))
  '(org-agenda-files (quote ("/Users/art/txt/goals.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-prefix-format
@@ -66,8 +66,8 @@
  '(org-capture-templates
    (quote
     (("t" "Add TODO item" entry
-      (file+headline "~/txt/inbox.org" "INBOX")
-      "* TODO %?"))))
+          (file+headline "~/txt/inbox.org" "INBOX")
+          "* TODO %?"))))
  '(org-columns-default-format
    "%70ITEM(Task) %15SCHEDULED %17Effort(Estimated Effort){:} %6CLOCKSUM")
  '(org-deadline-warning-days 14)
@@ -84,7 +84,7 @@
  '(org-sort-agenda-noeffort-is-high nil)
  '(package-selected-packages
    (quote
-    (org-drill org-bullets fzf org-super-agenda org-randomnote realgud-ipdb ipython-shell-send flycheck-pycheckers ox-pandoc flycheck-julia julia-mode julia-repl helm-ag perspective foo yas pony-mode django-mode slime ace-jump-mode ag airline-themes auto-complete better-defaults bitly bm color-theme-active color-theme-emacs-revert-theme color-theme-github color-theme-solarized color-theme-tango color-theme-wombat column-enforce-mode common-lisp-snippets corral docker-tramp ecb ein elfeed elpy emmet-mode expand-region f feature-mode flymake-cursor flymake-python-pyflakes fuzzy git-blame go-mode google-translate goto-chg goto-last-change graphviz-dot-mode helm-company helm-projectile helm-swoop html-to-markdown htmlize hy-mode hyperbole idomenu iedit init-loader iy-go-to-char jinja2-mode js2-refactor json-mode json-reformat jsx-mode keyfreq langtool layout-restore lispy list-utils magit markdown-mode minimap mo-git-blame nose ob-http olivetti org-caldav org-mobile-sync org-trello ox-rst ox-yawiki pandoc-mode paredit parinfer persp-mode popwin rainbow-delimiters realgud relative-line-numbers restclient skewer-mode slime-company sly smart-mode-line sotlisp spaceline tern-auto-complete w3 web-mode wgrep-helm which-key writeroom-mode xah-fly-keys yaml-mode yawiki-mode)))
+    (poly-org org-drill org-bullets fzf org-super-agenda org-randomnote realgud-ipdb ipython-shell-send flycheck-pycheckers ox-pandoc flycheck-julia julia-mode julia-repl helm-ag perspective foo yas pony-mode django-mode slime ace-jump-mode ag airline-themes auto-complete better-defaults bitly bm color-theme-active color-theme-emacs-revert-theme color-theme-github color-theme-solarized color-theme-tango color-theme-wombat column-enforce-mode common-lisp-snippets corral docker-tramp ecb ein elfeed elpy emmet-mode expand-region f feature-mode flymake-cursor flymake-python-pyflakes fuzzy git-blame go-mode google-translate goto-chg goto-last-change graphviz-dot-mode helm-company helm-projectile helm-swoop html-to-markdown htmlize hy-mode hyperbole idomenu iedit init-loader iy-go-to-char jinja2-mode js2-refactor json-mode json-reformat jsx-mode keyfreq langtool layout-restore lispy list-utils magit markdown-mode minimap mo-git-blame nose ob-http olivetti org-caldav org-mobile-sync org-trello ox-rst ox-yawiki pandoc-mode paredit parinfer persp-mode popwin rainbow-delimiters realgud relative-line-numbers restclient skewer-mode slime-company sly smart-mode-line sotlisp spaceline tern-auto-complete w3 web-mode wgrep-helm which-key writeroom-mode xah-fly-keys yaml-mode yawiki-mode)))
  '(pyvenv-activate nil)
  '(safe-local-variable-values (quote ((Package . CCL))))
  '(send-mail-function (quote sendmail-send-it))
