@@ -167,6 +167,7 @@ all tasks.org files into the list."
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((dot . true)
                                  (python . true)
+                                 (lisp . true)
                                  (shell . true)))
 
   ;; Set to the location of your Org files on your local system
@@ -217,25 +218,29 @@ all tasks.org files into the list."
     :config
     (add-hook 'org-mode-hook 'org-bullets-mode))
 
+;; To make code editing better:
+;; https://github.com/jingtaozf/literate-lisp
+(use-package poly-org
+             :ensure t)
 
 (use-package org-super-agenda
-    :ensure t
-    :config
-    (setf org-super-agenda-groups
-          '((:name "Сегодня"
-             :time-grid t
-             :todo "TODAY")
-            (:name "Важное"
-             :tag "work"
-             :priority "A")
-            (:name "Opensource"
-             :tag "opensource")
-            (:name "Учу"
-             :tag "learn")
-            (:todo "WAITING"
-             :order 8)
-            (:priority<= "B"
-             :order 1))))
+             :ensure t
+             :config
+             (setf org-super-agenda-groups
+                   '((:name "Сегодня"
+                      :time-grid t
+                      :todo "TODAY")
+                     (:name "Важное"
+                      :tag "work"
+                      :priority "A")
+                     (:name "Opensource"
+                      :tag "opensource")
+                     (:name "Учу"
+                      :tag "learn")
+                     (:todo "WAITING"
+                      :order 8)
+                     (:priority<= "B"
+                      :order 1))))
 
 
 (defun setup-org-caldav ()
