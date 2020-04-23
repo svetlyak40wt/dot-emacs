@@ -238,6 +238,7 @@ all tasks.org files into the list."
                       :todo "TODAY")
                      (:name "Важное"
                       :tag "work"
+                      :tag "finances"
                       :priority "A")
                      (:name "Opensource"
                       :tag "opensource")
