@@ -221,7 +221,13 @@ all tasks.org files into the list."
 ;; To make code editing better:
 ;; https://github.com/jingtaozf/literate-lisp
 (use-package poly-org
-             :ensure t)
+    :ensure t
+    :config
+    (setf auto-mode-alist
+          ;; To prevent automatic enabling this mode
+          ;; for all org files.
+          (remove '("\\.org\\'" . poly-org-mode)
+                  auto-mode-alist)))
 
 (use-package org-super-agenda
              :ensure t
