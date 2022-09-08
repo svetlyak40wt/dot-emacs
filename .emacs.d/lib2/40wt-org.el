@@ -163,11 +163,12 @@ all tasks.org files into the list."
 
   (setq org-export-backends '(html md))
 
-  ;; Пока закомментировал, похоже что некоторые из этих модулей надо ставить отельно
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((dot . true)
                                  (python . true)
                                  (lisp . true)
+                                 ;; Probably need to install ob-http extension
+                                 (http . true)
                                  (shell . true)))
 
   ;; Set to the location of your Org files on your local system
@@ -200,7 +201,9 @@ all tasks.org files into the list."
           ;; org-outline-path-complete-in-steps nil
           org-src-fontify-natively t ;; Pretty code blocks
           org-src-tab-acts-natively t
-          org-confirm-babel-evaluate nil)
+          org-confirm-babel-evaluate nil
+          ;; To remove indentation in CODE blocks
+          org-edit-src-content-indentation 0)
     ;; Чтобы работало раскрытие шаблонов по <s<TAB>
     (require 'org-tempo)
     
@@ -250,13 +253,29 @@ all tasks.org files into the list."
                       :order 1))))
 
 
+(use-package org-roam
+    :ensure t
+    :hook
+    (after-init . org-roam-mode)
+    :custom
+    (org-roam-directory "~/txt/roam/")
+    (org-roam-graph-executable "/usr/local/bin/dot")
+    :bind (:map org-roam-mode-map
+                (("C-c n l" . org-roam)
+                 ("C-c n f" . org-roam-find-file)
+                 ("C-c n g" . org-roam-graph-show))
+                :map org-mode-map
+                (("C-c n i" . org-roam-insert))
+                (("C-c n I" . org-roam-insert-immediate))))
+
+
 (defun setup-org-caldav ()
-;  (setq org-caldav-url "https://caldav.yandex-team.ru")
+                                        ;  (setq org-caldav-url "https://caldav.yandex-team.ru")
   (setq org-caldav-url "https://caldav.yandex-team.ru/principals/users/art@yandex-team.ru")
-;  (setq org-caldav-calendar-id "calendars/art%40yandex-team.ru/events-1527")
-   (setq org-caldav-calendar-id "events-1527")
+                                        ;  (setq org-caldav-calendar-id "calendars/art%40yandex-team.ru/events-1527")
+  (setq org-caldav-calendar-id "events-1527")
   
-   (setq org-caldav-inbox "~/txt/appointments.org"))
+  (setq org-caldav-inbox "~/txt/appointments.org"))
 
 ;; (require 'remember)
 

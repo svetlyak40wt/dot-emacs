@@ -10,7 +10,7 @@
 ;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (add-to-list 'package-archives
-             '("MELPA" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 
 ;; (setq package-archives '(("elpy" . "https://jorgenschaefer.github.io/packages/")))
 
