@@ -163,6 +163,8 @@ all tasks.org files into the list."
 
   (setq org-export-backends '(html md))
 
+  (use-package ob-http)
+
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((dot . true)
                                  (python . true)

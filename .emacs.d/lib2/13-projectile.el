@@ -12,4 +12,6 @@
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
     (projectile-mode +1)
     (setq projectile-completion-system 'helm)
+
+    (use-package helm-projectile)
     (helm-projectile-on))

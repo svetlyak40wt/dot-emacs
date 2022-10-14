@@ -41,7 +41,10 @@
 (global-set-key (kbd "C-c =") 'er/expand-region)
 (global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-c 0") 'ace-jump-mode)
-(global-set-key (kbd "C-c C-\\") 'goto-last-change)
+
+(use-package goto-chg
+  :config
+  (global-set-key (kbd "C-c C-\\") 'goto-last-change))
 
 ;; Кажется на C-c l ничего нет, ставим сюда быстрое переключение
 ;; между окнами
@@ -52,9 +55,11 @@
 (global-set-key (kbd "s-<down>") 'scroll-up-line)
 
 ;; работа с закладками
-(global-set-key (kbd "C-c b") 'bm-toggle)
-(global-set-key (kbd "C-c <up>") 'bm-previous)
-(global-set-key (kbd "C-c <down>") 'bm-next)
+(use-package bm
+  :config
+  (global-set-key (kbd "C-c b") 'bm-toggle)
+  (global-set-key (kbd "C-c <up>") 'bm-previous)
+  (global-set-key (kbd "C-c <down>") 'bm-next))
 ;; END используем то, на чем нет биндингов
 
 ;; какое-то старье, которое наверное можно удалить
