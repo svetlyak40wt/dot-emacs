@@ -51,10 +51,6 @@
 (global-set-key (kbd "s-<up>") 'scroll-down-line)
 (global-set-key (kbd "s-<down>") 'scroll-up-line)
 
-;; работа с закладками
-(global-set-key (kbd "C-c b") 'bm-toggle)
-(global-set-key (kbd "C-c <up>") 'bm-previous)
-(global-set-key (kbd "C-c <down>") 'bm-next)
 ;; END используем то, на чем нет биндингов
 
 ;; какое-то старье, которое наверное можно удалить
