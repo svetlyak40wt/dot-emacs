@@ -41,7 +41,10 @@
 (global-set-key (kbd "C-c =") 'er/expand-region)
 (global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-c 0") 'ace-jump-mode)
-(global-set-key (kbd "C-c C-\\") 'goto-last-change)
+
+(use-package goto-chg
+  :config
+  (global-set-key (kbd "C-c C-\\") 'goto-last-change))
 
 ;; Кажется на C-c l ничего нет, ставим сюда быстрое переключение
 ;; между окнами
