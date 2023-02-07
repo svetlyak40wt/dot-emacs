@@ -50,9 +50,10 @@ all tasks.org files into the list."
       (run-with-idle-timer (* 15 60) 1 'org-feed-update-all))
 
 
-    ;; Set text width and auto-wrapping
-    (setq-local fill-column 72)
-    (auto-fill-mode t)))
+    ;; Set text width and auto-wrapping if you wish. Personally I'm don't like it
+    ;; (setq-local fill-column 72)
+    ;; (auto-fill-mode 1)
+    ))
 
 
 (defun 40wt-configure-org-mode-agenda-buffer-hook ()
@@ -91,7 +92,7 @@ all tasks.org files into the list."
   
   ;; делаем так, чтобы в саджесте по файлам не появлялись архивные org-mode файлы
   (when (boundp 'ido-ignore-files)
-    (pushnew "\\.org_archive" ido-ignore-files))
+    (cl-pushnew "\\.org_archive" ido-ignore-files))
 
   ;; настраиваем ширину текста и включаем автоперенос
   (setq-local fill-column 72)
@@ -108,7 +109,8 @@ all tasks.org files into the list."
   (define-prefix-command 'org-todo-state-map)
 
   ;; чтобы айтемы с приоритетом  B поднимались в верх списка.
-  (setf org-default-priority org-lowest-priority)
+  ;; В emacs 28.2 нет переменной org-lowest-priority
+  ;; (setf org-default-priority org-lowest-priority)
   
   (define-key org-mode-map "\C-cx" 'org-todo-state-map)
                                         ;(define-key org-mode-map (kbd "C-c a l") 'org-agenda-list)
@@ -163,6 +165,8 @@ all tasks.org files into the list."
 
   (setq org-export-backends '(html md))
 
+  (use-package ob-http)
+
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((dot . true)
                                  (python . true)
@@ -188,26 +192,77 @@ all tasks.org files into the list."
 
   (setq org-caldav-debug-level 2)
 
-  (org-super-agenda-mode 1))
+  ;; To make long lines wrap on screen boundary:
+  (add-hook 'org-mode-hook 'visual-line-mode)
+
+  (40wt/set-org-headlines-fonts))
+
+
+(defun 40wt/set-org-theme-faces ()
+  ;; From https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+  (custom-theme-set-faces
+   'user
+   '(variable-pitch ((t (:family "ETBembo" :height 180 :weight thin))))
+   '(fixed-pitch ((t (:family "Pragmata Pro" :height 160)))))
+
+  ;; This makes some pieces too small
+  ;; I have to revise these settings carefully before apply:
+  ;; (custom-theme-set-faces
+  ;;  'user
+  ;;  '(org-block ((t (:inherit fixed-pitch))))
+  ;;  '(org-code ((t (:inherit (shadow fixed-pitch)))))
+  ;;  '(org-document-info ((t (:foreground "dark orange"))))
+  ;;  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+  ;;  '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+  ;;  '(org-link ((t (:foreground "royal blue" :underline t))))
+  ;;  '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+  ;;  '(org-property-value ((t (:inherit fixed-pitch))) t)
+  ;;  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+  ;;  '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+  ;;  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+  ;;  '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+  )
+
+
+(defun 40wt/set-org-headlines-fonts ()
+  ;; From https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+  (let* ((variable-tuple
+          (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
+                ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+                ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+                ((x-list-fonts "Verdana")         '(:font "Verdana"))
+                ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+                (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+         (base-font-color     (face-foreground 'default nil 'default))
+         (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+
+    (custom-theme-set-faces
+     'user
+     `(org-level-8 ((t (,@headline ,@variable-tuple))))
+     `(org-level-7 ((t (,@headline ,@variable-tuple))))
+     `(org-level-6 ((t (,@headline ,@variable-tuple))))
+     `(org-level-5 ((t (,@headline ,@variable-tuple))))
+     `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+     `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.2))))
+     `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.3))))
+     `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.5))))
+     `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil)))))))
 
 
 (use-package org
-    :ensure t
-    :init
-    (setq org-use-speed-commands t
-          org-hide-emphasis-markers t
-          ;; TODO: Попробовать как работает completion в refile
-          ;; org-completion-use-ido t
-          ;; org-outline-path-complete-in-steps nil
-          org-src-fontify-natively t ;; Pretty code blocks
-          org-src-tab-acts-natively t
-          org-confirm-babel-evaluate nil
-          ;; To remove indentation in CODE blocks
-          org-edit-src-content-indentation 0)
-    ;; Чтобы работало раскрытие шаблонов по <s<TAB>
-    (require 'org-tempo)
-    
-    (40wt-init-org-mode))
+  :ensure t
+  :config
+  (setq org-use-speed-commands t
+        org-hide-emphasis-markers t
+        ;; TODO: Попробовать как работает completion в refile
+        ;; org-completion-use-ido t
+        ;; org-outline-path-complete-in-steps nil
+        org-src-fontify-natively t ;; Pretty code blocks
+        org-src-tab-acts-natively t
+        org-confirm-babel-evaluate nil
+        ;; To remove indentation in CODE blocks
+        org-edit-src-content-indentation 0)
+  (40wt-init-org-mode))
 
 (use-package org-randomnote
     :ensure t
@@ -233,24 +288,25 @@ all tasks.org files into the list."
                   auto-mode-alist)))
 
 (use-package org-super-agenda
-             :ensure t
-             :config
-             (setf org-super-agenda-groups
-                   '((:name "Сегодня"
-                      :time-grid t
-                      :todo "TODAY")
-                     (:name "Важное"
-                      :tag "work"
-                      :tag "finances"
-                      :priority "A")
-                     (:name "Opensource"
-                      :tag "opensource")
-                     (:name "Учу"
-                      :tag "learn")
-                     (:todo "WAITING"
-                      :order 8)
-                     (:priority<= "B"
-                      :order 1))))
+  :ensure t
+  :config
+  (setf org-super-agenda-groups
+        '((:name "Сегодня"
+                 :time-grid t
+                 :todo "TODAY")
+          (:name "Важное"
+                 :tag "work"
+                 :tag "finances"
+                 :priority "A")
+          (:name "Opensource"
+                 :tag "opensource")
+          (:name "Учу"
+                 :tag "learn")
+          (:todo "WAITING"
+                 :order 8)
+          (:priority<= "B"
+                       :order 1)))
+  (org-super-agenda-mode 1))
 
 
 (use-package org-roam
@@ -259,14 +315,32 @@ all tasks.org files into the list."
     (after-init . org-roam-mode)
     :custom
     (org-roam-directory "~/txt/roam/")
-    (org-roam-graph-executable "/usr/local/bin/dot")
-    :bind (:map org-roam-mode-map
-                (("C-c n l" . org-roam)
-                 ("C-c n f" . org-roam-find-file)
-                 ("C-c n g" . org-roam-graph-show))
-                :map org-mode-map
-                (("C-c n i" . org-roam-insert))
-                (("C-c n I" . org-roam-insert-immediate))))
+    (org-roam-graph-executable "/opt/homebrew/bin/dot")
+    :bind (("C-c n f" . org-roam-node-find)
+           :map org-mode-map
+           ("C-c n i" . org-roam-node-insert))
+           
+    ;; :bind (:map org-roam-mode-map
+    ;;             (("C-c n l" . org-roam)
+    ;;              ("C-c n f" . org-roam-node-find)
+    ;;              ("C-c n g" . org-roam-graph-show))
+    ;;             :map org-mode-map
+    ;;             (("C-c n i" . org-roam-insert))
+    ;;             (("C-c n I" . org-roam-insert-immediate)))
+    )
+
+
+;; For Advanced Full-Text search
+;; https://www.orgroam.com/manual.html#Full_002dtext-search-with-Deft
+(use-package deft
+  :after org
+  :bind
+  ("C-c n d" . deft)
+  :custom
+  (deft-recursive t)
+  (deft-use-filter-string-for-filename t)
+  (deft-default-extension "org")
+  (deft-directory org-roam-directory))
 
 
 (defun setup-org-caldav ()
