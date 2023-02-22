@@ -43,6 +43,7 @@
 (global-set-key (kbd "C-c 0") 'ace-jump-mode)
 
 (use-package goto-chg
+  :ensure t
   :config
   (global-set-key (kbd "C-c C-\\") 'goto-last-change))
 
