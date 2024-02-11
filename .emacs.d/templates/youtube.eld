@@ -7,23 +7,25 @@ org-mode
 
 (youtube-en-donations
  "- You can support the project here: https://www.patreon.com/ultralisp
-- Connect to OpenSource development here: https://github.com/40ants")
+- Join my OpenSource projects here: https://github.com/40ants")
 
 
 (youtube-checklist
 
 "
-*** TODO Опубликовать ролик про ...
+*** Действия
+**** TODO Составить план
+**** TODO Снять видео
 **** TODO Нарезать видео
 **** TODO Сделать timecodes
-**** TODO Сделать описание на русском
-**** TODO Сделать описание на английском
 **** TODO Загрузить
+**** TODO Сделать описание на русском
 **** TODO Нарисовать обложку
 **** TODO Вычитать русские субтитры
+**** TODO Сделать описание на английском
 **** TODO Вычитать английские субтитры
-**** TODO Опубликовать на YouTube
 **** TODO Скачать субтитры в en.vtt и ru.vtt
+**** TODO Опубликовать на YouTube
 **** TODO Опубликовать на PeerTube
 **** TODO Сделать анонс в Fediverse
 **** TODO Сделать анонс в Twitter
