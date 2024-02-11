@@ -155,25 +155,88 @@ all tasks.org files into the list."
   (add-hook 'org-agenda-mode-hook '40wt-configure-org-mode-agenda-buffer-hook)
   (add-hook 'org-mode-hook '40wt-configure-org-mode-buffer-hook)
 
-  ;; setup todo items clocking
-  ;; http://orgmode.org/manual/Clocking-work-time.html#Clocking-work-time
-  (setq org-clock-persist 'history)
-  (org-clock-persistence-insinuate)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; Setup todo items clocking. ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  
+  ;; https://writequit.org/denver-emacs/presentations/2017-04-11-time-clocking-with-org.html
 
+  ;; To make C-c I and C-c O work anywhere
+  (setq org-clock-history-length 20)
+
+  ;; This function will popup a list of recently clocked task items
+  (defun 40ants/org-clock-in ()
+    (interactive)
+    (org-clock-in '(4)))
+
+  (global-set-key (kbd "C-c I") #'40ants/org-clock-in)
+  (global-set-key (kbd "C-c O") #'org-clock-out)
+  
+  ;; Resume clocking task when emacs is restarted
+  (org-clock-persistence-insinuate)
+  ;; Save the running clock and all clock history when exiting Emacs, load it on startup
+  (setq org-clock-persist t)
+  ;; Resume clocking task on clock-in if the clock is open
+  (setq org-clock-in-resume t)
+  ;; Do not prompt to resume an active clock, just resume it
+  (setq org-clock-persist-query-resume nil)
+
+
+  ;; Change task to STARTED state when I'm clocking in using C-c C-x C-i on org title
+  (setq org-clock-in-switch-to-state "STARTED")
+
+  ;; This hook makes clock in when I change org title state to STARTED
+  ;; using org-todo (C-c C-t) state selector:
+  (defun 40wt-org-todo-start-clock-when-started ()
+    (when (string-equal org-state "STARTED")
+      (org-clock-in)))
+  
+  (add-hook 'org-after-todo-state-change-hook '40wt-org-todo-start-clock-when-started)
+  
+  ;; Clock out when moving task to a done state
+  (setq org-clock-out-when-done '("DONE" "PAUSED" "WAITING" "CANCELED"))
+  ;; Save clock data and state changes and notes in the LOGBOOK drawer
+  (setq org-clock-into-drawer t)
+  (setq org-log-into-drawer t)
+
+  ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks
+  ;; with 0:00 duration
+  (setq org-clock-out-remove-zero-time-clocks t)
+  ;; Enable auto clock resolution for finding open clocks
+  (setq org-clock-auto-clock-resolution (quote when-no-clock-is-running))
+  ;; Include current clocking task in clock reports
+  (setq org-clock-report-include-clocking-task t)
+  ;; use pretty things for the clocktable
+  (setq org-pretty-entities t)
+  ;; Do not display subscripts and superscripts in smaller fonts
+  ;; I often use _ in variable names bu don't like to wrap them with = sign
+  ;; as inline code. Without this setting my texts are having many "subscripts"
+  ;; in places where I don't want.
+  (setf org-pretty-entities-include-sub-superscripts nil)
+
+  (setq org-clock-idle-time 15)
+
+  (setq org-agenda-clockreport-parameter-plist
+      '(:maxlevel 4 :compact t :narrow 60))
+
+  
   ;; optional configuration of RSS source for inbox
   
-
   (setq org-export-backends '(html md))
 
   (use-package ob-http)
 
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((dot . true)
+                                 ;; https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-sql.html
+                                 (sql . true)
                                  (python . true)
                                  (lisp . true)
                                  ;; Probably need to install ob-http extension
                                  (http . true)
                                  (shell . true)))
+
+  (setf org-babel-lisp-eval-fn 'sly-eval)
 
   ;; Set to the location of your Org files on your local system
   (setq org-directory "~/txt")
