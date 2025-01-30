@@ -5,4 +5,4 @@
   ;; To not clutter my projects with
   ;; .*.~undo-tree~ files:
   (setf undo-tree-history-directory-alist
-        '((".*" . ".emacs.d/undo-history/"))))
+        '((".*" . "~/.emacs.d/undo-history/"))))
