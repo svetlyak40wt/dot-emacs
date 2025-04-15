@@ -12,6 +12,25 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
 
+
+;; (require 'package)
+;; https://emacs.stackexchange.com/questions/17401/how-can-i-set-up-an-elpa-server
+(setq package-enable-at-startup nil)
+
+(require 'package-x)
+
+(defvar local-archive
+  (expand-file-name "local-archive/" user-emacs-directory)
+  "Location of the package archive.")
+
+
+(when (file-exists-p local-archive)
+  (setq package-archive-upload-base local-archive)
+  (add-to-list 'package-archives `("local" . ,local-archive) t))
+
+(package-initialize)
+
+
 ;; (setq package-archives '(("elpy" . "https://jorgenschaefer.github.io/packages/")))
 
 
