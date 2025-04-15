@@ -16,8 +16,15 @@ org-mode
      (6 "Суббота")))
 "
 ** Важное
+"
+(let ((day-of-week (ts-dow (ts-now))))
+
+   (case day-of-week
+     (1 "
 *** TODO Разбирать ZenMoney за обедом
-*** TODO Анализировать проекты на Product Hunt
+")))
+
+"
 ** Мои проекты
 
 ** Работа
