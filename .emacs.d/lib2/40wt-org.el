@@ -101,7 +101,8 @@ all tasks.org files into the list."
   ;; http://orgmode.org/manual/Fast-access-to-TODO-states.html#Fast-access-to-TODO-states
   ;; https://orgmode.org/guide/Multi_002dstate-workflows.html
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "PAUSED(p!)" "|" "DONE(d!)" "DELEGATED(f!)" "CANCELLED(c!)")))
+        '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "PAUSED(p!)" "|" "DONE(d!)" "DELEGATED(f!)" "CANCELLED(c!)")
+          (sequence "TODO(е)" "STARTED(ы!)" "WAITING(ц@/!)" "PAUSED(з!)" "|" "DONE(в!)" "DELEGATED(а!)" "CANCELLED(с!)")))
 
   (setq org-global-properties
         '(("Effort_ALL". "0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")))
@@ -258,62 +259,63 @@ all tasks.org files into the list."
   ;; To make long lines wrap on screen boundary:
   (add-hook 'org-mode-hook 'visual-line-mode)
 
-  (40wt/set-org-headlines-fonts))
-
-
-(defun 40wt/set-org-theme-faces ()
-  ;; From https://zzamboni.org/post/beautifying-org-mode-in-emacs/
-  (custom-theme-set-faces
-   'user
-   '(variable-pitch ((t (:family "ETBembo" :height 180 :weight thin))))
-   '(fixed-pitch ((t (:family "Pragmata Pro" :height 160)))))
-
-  ;; This makes some pieces too small
-  ;; I have to revise these settings carefully before apply:
-  ;; (custom-theme-set-faces
-  ;;  'user
-  ;;  '(org-block ((t (:inherit fixed-pitch))))
-  ;;  '(org-code ((t (:inherit (shadow fixed-pitch)))))
-  ;;  '(org-document-info ((t (:foreground "dark orange"))))
-  ;;  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
-  ;;  '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-  ;;  '(org-link ((t (:foreground "royal blue" :underline t))))
-  ;;  '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-  ;;  '(org-property-value ((t (:inherit fixed-pitch))) t)
-  ;;  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-  ;;  '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
-  ;;  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
-  ;;  '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+  ;; (40wt/set-org-headlines-fonts)
   )
 
 
-(defun 40wt/set-org-headlines-fonts ()
-  ;; From https://zzamboni.org/post/beautifying-org-mode-in-emacs/
-  
-  ;; We need to ensure this function exists, because it is only available
-  ;; in graphical mode:
-  (when (fboundp 'x-list-fonts)
-    (let* ((variable-tuple
-            (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
-                  ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-                  ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-                  ((x-list-fonts "Verdana")         '(:font "Verdana"))
-                  ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-                  (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-           (base-font-color     (face-foreground 'default nil 'default))
-           (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+;; (defun 40wt/set-org-theme-faces ()
+;;   ;; From https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+;;   (custom-theme-set-faces
+;;    'user
+;;    '(variable-pitch ((t (:family "ETBembo" :height 180 :weight thin))))
+;;    '(fixed-pitch ((t (:family "Pragmata Pro" :height 160)))))
 
-      (custom-theme-set-faces
-       'user
-       `(org-level-8 ((t (,@headline ,@variable-tuple))))
-       `(org-level-7 ((t (,@headline ,@variable-tuple))))
-       `(org-level-6 ((t (,@headline ,@variable-tuple))))
-       `(org-level-5 ((t (,@headline ,@variable-tuple))))
-       `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-       `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.2))))
-       `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.3))))
-       `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.5))))
-       `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))))
+;;   ;; This makes some pieces too small
+;;   ;; I have to revise these settings carefully before apply:
+;;   ;; (custom-theme-set-faces
+;;   ;;  'user
+;;   ;;  '(org-block ((t (:inherit fixed-pitch))))
+;;   ;;  '(org-code ((t (:inherit (shadow fixed-pitch)))))
+;;   ;;  '(org-document-info ((t (:foreground "dark orange"))))
+;;   ;;  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+;;   ;;  '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+;;   ;;  '(org-link ((t (:foreground "royal blue" :underline t))))
+;;   ;;  '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+;;   ;;  '(org-property-value ((t (:inherit fixed-pitch))) t)
+;;   ;;  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+;;   ;;  '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+;;   ;;  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+;;   ;;  '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+;;   )
+
+
+;; (defun 40wt/set-org-headlines-fonts ()
+;;   ;; From https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+  
+;;   ;; We need to ensure this function exists, because it is only available
+;;   ;; in graphical mode:
+;;   (when (fboundp 'x-list-fonts)
+;;     (let* ((variable-tuple
+;;             (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
+;;                   ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+;;                   ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+;;                   ((x-list-fonts "Verdana")         '(:font "Verdana"))
+;;                   ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+;;                   (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+;;            (base-font-color     (face-foreground 'default nil 'default))
+;;            (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+
+;;       (custom-theme-set-faces
+;;        'user
+;;        `(org-level-8 ((t (,@headline ,@variable-tuple))))
+;;        `(org-level-7 ((t (,@headline ,@variable-tuple))))
+;;        `(org-level-6 ((t (,@headline ,@variable-tuple))))
+;;        `(org-level-5 ((t (,@headline ,@variable-tuple))))
+;;        `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+;;        `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.2))))
+;;        `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.3))))
+;;        `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.5))))
+;;        `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))))
 
 
 (use-package org
@@ -324,24 +326,37 @@ all tasks.org files into the list."
         ;; TODO: Попробовать как работает completion в refile
         ;; org-completion-use-ido t
         ;; org-outline-path-complete-in-steps nil
-        org-src-fontify-natively t ;; Pretty code blocks
+        ;; org-src-fontify-natively t ;; Pretty code blocks
         org-src-tab-acts-natively t
         org-confirm-babel-evaluate nil
         ;; To remove indentation in CODE blocks
         org-edit-src-content-indentation 0)
   (40wt-init-org-mode))
 
+
+(use-package org-modern
+    :ensure t
+    :hook org-mode)
+
+
+(when (file-exists-p "~/.emacs.d/local/org-modern-indent")
+  (use-package org-modern-indent
+      :load-path "~/.emacs.d/local/org-modern-indent/"
+      :ensure t
+      :config                           ; add late to hook
+      (add-hook 'org-mode-hook #'org-modern-indent-mode 90)))
+
 (use-package org-randomnote
-    :ensure t
-    :bind ("C-c C-x r" . org-randomnote)
-    :config
-    (setq org-randomnote-candidates '("~/txt/workaround.org")))
+  :ensure t
+  :bind ("C-c C-x r" . org-randomnote)
+  :config
+  (setq org-randomnote-candidates '("~/txt/workaround.org")))
 
 
-(use-package org-bullets
-    :ensure t
-    :config
-    (add-hook 'org-mode-hook 'org-bullets-mode))
+;; (use-package org-bullets
+;;     :ensure t
+;;     :config
+;;     (add-hook 'org-mode-hook 'org-bullets-mode))
 
 ;; To make code editing better:
 ;; https://github.com/jingtaozf/literate-lisp
@@ -377,24 +392,27 @@ all tasks.org files into the list."
 
 
 (use-package org-roam
-    :ensure t
-    :hook
-    (after-init . org-roam-mode)
-    :custom
-    (org-roam-directory "~/txt/roam/")
-    (org-roam-graph-executable "/opt/homebrew/bin/dot")
-    :bind (("C-c n f" . org-roam-node-find)
-           :map org-mode-map
-           ("C-c n i" . org-roam-node-insert))
-           
-    ;; :bind (:map org-roam-mode-map
-    ;;             (("C-c n l" . org-roam)
-    ;;              ("C-c n f" . org-roam-node-find)
-    ;;              ("C-c n g" . org-roam-graph-show))
-    ;;             :map org-mode-map
-    ;;             (("C-c n i" . org-roam-insert))
-    ;;             (("C-c n I" . org-roam-insert-immediate)))
-    )
+  :ensure t
+  :hook
+  (after-init . org-roam-mode)
+  :custom
+  (org-roam-directory "~/txt/roam/")
+  (org-roam-graph-executable "/opt/homebrew/bin/dot")
+  :bind (("C-c n f" . org-roam-node-find)
+         :map org-mode-map
+         ("C-c n i" . org-roam-node-insert))
+  :config
+  (when (file-exists-p "~/txt/roam/")
+    (org-roam-db-autosync-mode 1))
+  
+  ;; :bind (:map org-roam-mode-map
+  ;;             (("C-c n l" . org-roam)
+  ;;              ("C-c n f" . org-roam-node-find)
+  ;;              ("C-c n g" . org-roam-graph-show))
+  ;;             :map org-mode-map
+  ;;             (("C-c n i" . org-roam-insert))
+  ;;             (("C-c n I" . org-roam-insert-immediate)))
+  )
 
 
 ;; For Advanced Full-Text search
