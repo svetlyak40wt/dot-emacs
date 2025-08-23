@@ -171,11 +171,13 @@
 ;;       (lambda ()
 ;;         nil))
 
+;; Load project local code
 (let ((local-conf (expand-file-name ".local.el")))
   (if (file-exists-p local-conf)
       (load local-conf)))
-(put 'narrow-to-region 'disabled nil)
 
+
+(put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
 
@@ -197,4 +199,5 @@
 ;; ;; Helm is overhelming!
 ;; (helm-mode)
 ;; (helm-projectile-on)
+
 

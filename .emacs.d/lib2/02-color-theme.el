@@ -21,7 +21,15 @@
   solarized-theme
   :config
   (message "Configuring color theme")
-  (load-theme 'solarized-light t)
+  ;; Прежде использовал такую тему:
+  ;;  (load-theme 'solarized-light t)
+  
+  ;; Использовал эту тему чтобы код норм выглядел на PocketBook
+  ;; (load-theme 'whiteboard t)
+  
+  ;; This theme is more suitable when working in the dark room
+  ;;  (load-theme 'solarized-wombat-dark t)
+  (load-theme 'wombat t)
   (setq sml/theme 'respectful)
   (setq sml/no-confirm-load-theme t)
   (sml/setup))
