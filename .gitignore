@@ -1,1 +1,5 @@
 .*.~undo-tree~
+.emacs.d/projectile-bookmarks.eld
+.emacs.d/eln-cache
+.emacs.d/history
+.emacs.d/custom.el

@@ -12,6 +12,25 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
 
+
+;; (require 'package)
+;; https://emacs.stackexchange.com/questions/17401/how-can-i-set-up-an-elpa-server
+(setq package-enable-at-startup nil)
+
+(require 'package-x)
+
+(defvar local-archive
+  (expand-file-name "local-archive/" user-emacs-directory)
+  "Location of the package archive.")
+
+
+(when (file-exists-p local-archive)
+  (setq package-archive-upload-base local-archive)
+  (add-to-list 'package-archives `("local" . ,local-archive) t))
+
+(package-initialize)
+
+
 ;; (setq package-archives '(("elpy" . "https://jorgenschaefer.github.io/packages/")))
 
 
@@ -31,42 +50,42 @@
 ;;        (require package))))
 
 
-;; el-get
-(defvar *el-get-directory*
-  (expand-file-name "el-get/el-get" *emacs-config-directory*))
+;; ;; el-get
+;; (defvar *el-get-directory*
+;;   (expand-file-name "el-get/el-get" *emacs-config-directory*))
 
-(add-to-list 'load-path *el-get-directory*)
+;; (add-to-list 'load-path *el-get-directory*)
 
-;; install el-get
-(unless (require 'el-get nil t)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
+;; ;; install el-get
+;; (unless (require 'el-get nil t)
+;;   (with-current-buffer
+;;       (url-retrieve-synchronously
+;;        "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+;;     (goto-char (point-max))
+;;     (eval-print-last-sexp)))
 
-(require 'el-get)
-
-
-(setq el-get-recipe-path
-      (list (expand-file-name "recipes" *el-get-directory*)
-            (expand-file-name "el-get/user/recipes" *emacs-config-directory*)))
-
-(setq el-get-user-package-directory
-      (expand-file-name "el-get/user/init-files" *emacs-config-directory*))
-
-(el-get 'sync)
+;; (require 'el-get)
 
 
-(package-initialize nil)
+;; (setq el-get-recipe-path
+;;       (list (expand-file-name "recipes" *el-get-directory*)
+;;             (expand-file-name "el-get/user/recipes" *emacs-config-directory*)))
+
+;; (setq el-get-user-package-directory
+;;       (expand-file-name "el-get/user/init-files" *emacs-config-directory*))
+
+;; (el-get 'sync)
 
 
-;;; Если пакет use-package не установлен, его нужно скачать и
-;;; установить
-(unless (package-installed-p 'use-package)
-  (message "EMACS install use-package.el")
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; (package-initialize nil)
+
+
+;; ;;; Если пакет use-package не установлен, его нужно скачать и
+;; ;;; установить
+;; (unless (package-installed-p 'use-package)
+;;   (message "EMACS install use-package.el")
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
 
 
 ;;; Установили, загрузили, указали, что недостающие пакеты нужно
