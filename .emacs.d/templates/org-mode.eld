@@ -4,7 +4,8 @@ org-mode
 
 (day "
 * "
-(let ((day-of-week (ts-dow (ts-now))))
+     (let* ((_ (require 'ts))
+       (day-of-week (ts-dow (ts-now))))
 
    (case day-of-week
      (0 "Воскресенье")

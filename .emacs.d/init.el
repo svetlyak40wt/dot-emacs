@@ -91,7 +91,8 @@
 ;;; Установили, загрузили, указали, что недостающие пакеты нужно
 ;;; автоматически загружать и устанавливать.
 (require 'use-package)
-(setq use-package-always-ensure t)
+
+;; (setq use-package-always-ensure t)
 
 
 ;; (when (not package-archive-contents)
@@ -164,12 +165,23 @@
 ; (mapc 'load (directory-files "~/.emacs.d/lib" t "^[^#].*el$"))
 
 (use-package
- init-loader
- :config
- (setq init-loader-show-log-after-init nil)
- (setq init-loader-default-regexp "\\(?:\\`\\)")
- (init-loader-load
-  (expand-file-name "lib2/" *emacs-config-directory*)))
+    init-loader
+    :config
+  (setq init-loader-show-log-after-init nil)
+  (setq init-loader-default-regexp "\\(?:\\`\\)")
+  
+  (let ((lib2-folder (expand-file-name "lib2/" *emacs-config-directory*))
+        (conf-folder (expand-file-name "conf/" *emacs-config-directory*)))
+    (when (file-exists-p lib2-folder)
+      (warn "Loading init files from %s folder is deprecated. Move files to %s folder."
+            lib2-folder
+            conf-folder)
+      (message "Loading configs from .emacs.d/lib2/")
+      (init-loader-load lib2-folder))
+
+    (when (file-exists-p lib2-folder)
+      (message "Loading configs from .emacs.d/conf/")
+      (init-loader-load conf-folder))))
 
 ;; TODO: enable later
 ;; (require-or-install 'init-loader)
@@ -217,3 +229,12 @@
 ;; (helm-mode)
 ;; (helm-projectile-on)
 
+
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Emacs ready in %s with %d garbage collections. Features count: %s"
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done
+                     (length features))))

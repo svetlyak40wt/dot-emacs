@@ -1,13 +1,18 @@
-(use-package
-    helm
-    :bind ("C-x C-f" . helm-find-files)
-    :init
-    (message "Configuring Helm mode")
-    (helm-mode))
+(use-package helm
+  :defer 5
+  
+  :bind ("C-x C-f" . helm-find-files)
+  :custom
+  (helm-buffer-max-length 40)
+  :config
+  (message "Configuring Helm mode")
+  (setf helm-buffer-max-length 40)
+  (helm-mode))
 
-(use-package
-    helm-ag
-    :init
+
+(use-package helm-ag
+  :after helm
+  :config
   (message "Configuring Helm AG")
   (cond
    ((file-exists-p "~/.nix-profile/bin/ag")

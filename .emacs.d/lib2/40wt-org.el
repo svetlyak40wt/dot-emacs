@@ -18,8 +18,11 @@ all tasks.org files into the list."
   (require 's)
 
 
-  (setq org-agenda-files (list "~/txt/goals.org"))
-
+  ;; Я использовал отдельные файлы tasks.org для хранения дел по разным областям своей деятельности. 
+  ;; После перехода на 12-недельный формат стал собирать все дела в отдельных файлах по соответствующим неделям. 
+  ;; Поэтому этот код больше не нужен.
+  ;; (setq org-agenda-files (list "~/txt/goals.org"))
+  
   ;; (setq org-agenda-files
   ;;       (f-entries org-directory
   ;;                  (lambda (filename)
@@ -63,7 +66,8 @@ all tasks.org files into the list."
 
 ;; Чтобы экспорт из Org-mode в HTML работал
 (use-package htmlize
-    :ensure t)
+;  :ensure t
+  :defer t)
 
 (setf org-publish-project-alist
       '(("svetlyak"
@@ -99,10 +103,12 @@ all tasks.org files into the list."
   (auto-fill-mode t)
 
   ;; http://orgmode.org/manual/Fast-access-to-TODO-states.html#Fast-access-to-TODO-states
-  ;; https://orgmode.org/guide/Multi_002dstate-workflows.html
+  ;; https://orgmode.org/guide/Multi_002dstate-Workflow.html
+  ;; Значение @ и ! описано тут:
+  ;; https://orgmode.org/guide/Progress-Logging.html
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@/!)" "PAUSED(p!)" "|" "DONE(d!)" "DELEGATED(f!)" "CANCELLED(c!)")
-          (sequence "TODO(е)" "STARTED(ы!)" "WAITING(ц@/!)" "PAUSED(з!)" "|" "DONE(в!)" "DELEGATED(а!)" "CANCELLED(с!)")))
+        '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w!)" "PAUSED(p!)" "|" "DONE(d!)" "DELEGATED(f!)" "CANCELLED(c!)")
+          (sequence "TODO(е)" "STARTED(ы!)" "WAITING(ц!)" "PAUSED(з!)" "|" "DONE(в!)" "DELEGATED(а!)" "CANCELLED(с!)")))
 
   (setq org-global-properties
         '(("Effort_ALL". "0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")))
@@ -112,6 +118,11 @@ all tasks.org files into the list."
   ;; чтобы айтемы с приоритетом  B поднимались в верх списка.
   ;; В emacs 28.2 нет переменной org-lowest-priority
   ;; (setf org-default-priority org-lowest-priority)
+
+  ;; Это нужно чтобы при фильтре PRIORITY<="C" показывались
+  ;; только те дела, для которых явно проставлен A, B или C приоритет, а те где приоритет
+  ;; не проставлен явно, считались низкоприоритетными
+  (setq org-priority-default (1+ org-priority-lowest))
   
   (define-key org-mode-map "\C-cx" 'org-todo-state-map)
                                         ;(define-key org-mode-map (kbd "C-c a l") 'org-agenda-list)
@@ -129,17 +140,17 @@ all tasks.org files into the list."
   ;;  #'(lambda () (interactive) (expand-ticket-at-point t)))
 
   (define-key org-todo-state-map "x"
-    #'(lambda nil (interactive) (org-todo "CANCELLED")))
+              #'(lambda nil (interactive) (org-todo "CANCELLED")))
   (define-key org-todo-state-map "d"
-    #'(lambda nil (interactive) (org-todo "DONE")))
+              #'(lambda nil (interactive) (org-todo "DONE")))
   (define-key org-todo-state-map "f"
-    #'(lambda nil (interactive) (org-todo "DEFERRED")))
+              #'(lambda nil (interactive) (org-todo "DEFERRED")))
   (define-key org-todo-state-map "p"
-    #'(lambda nil (interactive) (org-todo "PAUSED")))
+              #'(lambda nil (interactive) (org-todo "PAUSED")))
   (define-key org-todo-state-map "s"
-    #'(lambda nil (interactive) (org-todo "STARTED")))
+              #'(lambda nil (interactive) (org-todo "STARTED")))
   (define-key org-todo-state-map "w"
-    #'(lambda nil (interactive) (org-todo "WAITING")))
+              #'(lambda nil (interactive) (org-todo "WAITING")))
 
 
   ;; delay task to 1 week
@@ -156,9 +167,9 @@ all tasks.org files into the list."
   (add-hook 'org-agenda-mode-hook '40wt-configure-org-mode-agenda-buffer-hook)
   (add-hook 'org-mode-hook '40wt-configure-org-mode-buffer-hook)
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Setup todo items clocking. ;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   
   ;; https://writequit.org/denver-emacs/presentations/2017-04-11-time-clocking-with-org.html
 
@@ -218,7 +229,7 @@ all tasks.org files into the list."
   (setq org-clock-idle-time 15)
 
   (setq org-agenda-clockreport-parameter-plist
-      '(:maxlevel 4 :compact t :narrow 60))
+        '(:maxlevel 4 :compact t :narrow 60))
 
   
   ;; optional configuration of RSS source for inbox
@@ -319,7 +330,10 @@ all tasks.org files into the list."
 
 
 (use-package org
-  :ensure t
+  :defer t
+  ;; Previously I've had this binding inside the org-roam use-package
+  ;; form, but when doing deferred loading it does not work there
+  :bind (("C-c n f" . org-roam-node-find))
   :config
   (setq org-use-speed-commands t
         org-hide-emphasis-markers t
@@ -335,19 +349,20 @@ all tasks.org files into the list."
 
 
 (use-package org-modern
-    :ensure t
+    :defer t
     :hook org-mode)
 
 
 (when (file-exists-p "~/.emacs.d/local/org-modern-indent")
   (use-package org-modern-indent
-      :load-path "~/.emacs.d/local/org-modern-indent/"
-      :ensure t
-      :config                           ; add late to hook
-      (add-hook 'org-mode-hook #'org-modern-indent-mode 90)))
+    :load-path "~/.emacs.d/local/org-modern-indent/"
+    :defer t
+                                        ;      :ensure t
+    :config                           ; add late to hook
+    (add-hook 'org-mode-hook #'org-modern-indent-mode 90)))
 
 (use-package org-randomnote
-  :ensure t
+  :defer t
   :bind ("C-c C-x r" . org-randomnote)
   :config
   (setq org-randomnote-candidates '("~/txt/workaround.org")))
@@ -361,7 +376,7 @@ all tasks.org files into the list."
 ;; To make code editing better:
 ;; https://github.com/jingtaozf/literate-lisp
 (use-package poly-org
-    :ensure t
+    :defer t
     :config
     (setf auto-mode-alist
           ;; To prevent automatic enabling this mode
@@ -370,7 +385,7 @@ all tasks.org files into the list."
                   auto-mode-alist)))
 
 (use-package org-super-agenda
-  :ensure t
+  :defer t
   :config
   (setf org-super-agenda-groups
         '((:name "Сегодня"
@@ -391,15 +406,21 @@ all tasks.org files into the list."
   (org-super-agenda-mode 1))
 
 
+;; Этот модуль добавляет одноименную команду, которая позволяет вставить URL, автоматически подставив его title в качестве description ссылки.
+;; https://emacs.stackexchange.com/questions/78840/how-do-i-insert-an-http-link-into-org-mode-with-its-title
+(use-package org-cliplink
+  :defer t
+  :after org)
+
 (use-package org-roam
-  :ensure t
+  :defer t
+  :after org
   :hook
   (after-init . org-roam-mode)
   :custom
   (org-roam-directory "~/txt/roam/")
   (org-roam-graph-executable "/opt/homebrew/bin/dot")
-  :bind (("C-c n f" . org-roam-node-find)
-         :map org-mode-map
+  :bind (:map org-mode-map
          ("C-c n i" . org-roam-node-insert))
   :config
   (when (file-exists-p "~/txt/roam/")
@@ -418,6 +439,7 @@ all tasks.org files into the list."
 ;; For Advanced Full-Text search
 ;; https://www.orgroam.com/manual.html#Full_002dtext-search-with-Deft
 (use-package deft
+  :defer t
   :after org
   :bind
   ("C-c n d" . deft)
@@ -444,8 +466,9 @@ all tasks.org files into the list."
 (define-key global-map (kbd "C-M-r") 'org-capture)
 
 ;; Macroses
-(fset '40wt-today-task
-   [?\C-c ?\C-t ?t ?\C-c ?\C-s return ?\C-a down down ?\C-a])
-(define-key org-mode-map (kbd "C-t") '40wt-today-task)
+;; Don' remember how did I use it
+;; (fset '40wt-today-task
+;;    [?\C-c ?\C-t ?t ?\C-c ?\C-s return ?\C-a down down ?\C-a])
+;; (define-key org-mode-map (kbd "C-t") '40wt-today-task)
 
 (provide '40wt-org)
