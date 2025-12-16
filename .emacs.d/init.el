@@ -167,7 +167,12 @@
 (use-package
     init-loader
     :config
-  (setq init-loader-show-log-after-init nil)
+  ;; To show any errors in config files.
+  ;; Otherwise, init loader will silently eat them
+  ;; and you will have to use init-loader-show-log command
+  ;; to show the log.
+  (setq init-loader-show-log-after-init 'error-only)
+    
   (setq init-loader-default-regexp "\\(?:\\`\\)")
   
   (let ((lib2-folder (expand-file-name "lib2/" *emacs-config-directory*))
