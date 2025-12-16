@@ -176,11 +176,11 @@
       (warn "Loading init files from %s folder is deprecated. Move files to %s folder."
             lib2-folder
             conf-folder)
-      (message "Loading configs from .emacs.d/lib2/")
+      (message "Loading configs from %s" lib2-folder)
       (init-loader-load lib2-folder))
 
-    (when (file-exists-p lib2-folder)
-      (message "Loading configs from .emacs.d/conf/")
+    (when (file-exists-p conf-folder)
+      (message "Loading configs from %s" conf-folder)
       (init-loader-load conf-folder))))
 
 ;; TODO: enable later
@@ -202,11 +202,13 @@
 ;;       (lambda ()
 ;;         nil))
 
+;; Load project local code
 (let ((local-conf (expand-file-name ".local.el")))
   (if (file-exists-p local-conf)
       (load local-conf)))
-(put 'narrow-to-region 'disabled nil)
 
+
+(put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 
 
