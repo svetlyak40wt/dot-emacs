@@ -2,6 +2,9 @@
 (when (file-directory-p "/opt/homebrew/bin")
   (add-to-list 'exec-path "/opt/homebrew/bin"))
 
+(when (file-directory-p "/Users/art/.nix-profile/bin")
+  (add-to-list 'exec-path "/Users/art/.nix-profile/bin"))
+
 
 ;; Emacs started from command line and as a GUI app will inherit
 ;; different PATH, and changing exec-path in elisp files will
