@@ -165,7 +165,8 @@
 ; (mapc 'load (directory-files "~/.emacs.d/lib" t "^[^#].*el$"))
 
 (use-package
-    init-loader
+  init-loader
+  :ensure t
     :config
   ;; To show any errors in config files.
   ;; Otherwise, init loader will silently eat them

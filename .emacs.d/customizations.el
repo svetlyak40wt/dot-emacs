@@ -14,40 +14,16 @@
  '(google-translate-default-target-language "ru")
  '(graphviz-dot-dot-program "/usr/local/bin/dot")
  '(htmlize-output-type 'inline-css)
- '(json-reformat:pretty-string\? t)
+ '(json-reformat:pretty-string? t)
  '(markdown-command "/usr/local/bin/markdown")
  '(menu-bar-mode nil)
  '(ns-alternate-modifier 'meta)
  '(org-agenda-custom-commands
-   '(("d" todo "DELEGATED" nil)
-     ("c" todo "DONE|DEFERRED|CANCELLED" nil)
-     ("w" todo "WAITING" nil)
-     ("W" agenda ""
-      ((org-agenda-ndays 21)))
-     ("A" agenda ""
-      ((org-agenda-skip-function
-        (lambda nil
-          (org-agenda-skip-entry-if 'notregexp "\\=.*\\[#A\\]")))
-       (org-agenda-ndays 1)
-       (org-agenda-overriding-header "Today's Priority #A tasks: ")))
-     ("u" alltodo ""
-      ((org-agenda-skip-function
-        (lambda nil
-          (org-agenda-skip-entry-if 'scheduled 'deadline 'regexp "
-]+>")))
-       (org-agenda-overriding-header "Unscheduled TODO entries: ")))
-     ("x" "Save to file" agenda ""
-      ((org-agenda-prefix-format "")
-       (org-agenda-ndays 1))
-      ("/Users/art/txt/agenda.html"))))
+   '(("d" todo "DELEGATED" nil) ("c" todo "DONE|DEFERRED|CANCELLED" nil) ("w" todo "WAITING" nil) ("W" agenda "" ((org-agenda-ndays 21))) ("A" agenda "" ((org-agenda-skip-function (lambda nil (org-agenda-skip-entry-if 'notregexp "\\=.*\\[#A\\]"))) (org-agenda-ndays 1) (org-agenda-overriding-header "Today's Priority #A tasks: "))) ("u" alltodo "" ((org-agenda-skip-function (lambda nil (org-agenda-skip-entry-if 'scheduled 'deadline 'regexp "\12]+>"))) (org-agenda-overriding-header "Unscheduled TODO entries: "))) ("x" "Save to file" agenda "" ((org-agenda-prefix-format "") (org-agenda-ndays 1)) ("/Users/art/txt/agenda.html"))))
  '(org-agenda-files '("/Users/art/txt/goals.org"))
  '(org-agenda-ndays 7)
  '(org-agenda-prefix-format
-   '((agenda . " %i %-12:c%?-12t% s")
-     (timeline . "  % s")
-     (todo . " %i %-12:c")
-     (tags . " %i %-12:c")
-     (search . " %i %-12:c")))
+   '((agenda . " %i %-12:c%?-12t% s") (timeline . "  % s") (todo . " %i %-12:c") (tags . " %i %-12:c") (search . " %i %-12:c")))
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-scheduled-if-done nil)
@@ -55,9 +31,7 @@
  '(org-agenda-start-on-weekday nil)
  '(org-agenda-window-setup 'current-window)
  '(org-capture-templates
-   '(("t" "Add TODO item" entry
-      (file+headline "~/txt/inbox.org" "INBOX")
-      "* TODO %?")))
+   '(("t" "Add TODO item" entry (file+headline "~/txt/inbox.org" "INBOX") "* TODO %?")))
  '(org-columns-default-format
    "%70ITEM(Task) %15SCHEDULED %17Effort(Estimated Effort){:} %6CLOCKSUM")
  '(org-deadline-warning-days 14)
@@ -73,7 +47,7 @@
  '(org-reverse-note-order nil)
  '(org-sort-agenda-noeffort-is-high nil)
  '(package-selected-packages
-   '(telega tide typescript-mode deft undo-tree forge magit-forge sly-package-inferred diffview sly-docker sly-tramp sly-repl-ansi-color sly-macrostep sly-named-readtables org-roam poly-markdown polymode poly-org org-drill org-bullets fzf org-super-agenda org-randomnote realgud-ipdb ipython-shell-send flycheck-pycheckers ox-pandoc flycheck-julia julia-mode julia-repl helm-ag perspective foo yas pony-mode django-mode ace-jump-mode ag airline-themes auto-complete better-defaults bitly bm color-theme-active color-theme-emacs-revert-theme color-theme-github color-theme-solarized color-theme-tango color-theme-wombat column-enforce-mode common-lisp-snippets corral docker-tramp ecb ein elfeed elpy emmet-mode expand-region f feature-mode flymake-cursor flymake-python-pyflakes fuzzy git-blame go-mode google-translate goto-chg goto-last-change graphviz-dot-mode helm-company helm-projectile helm-swoop html-to-markdown htmlize hy-mode hyperbole idomenu iedit init-loader iy-go-to-char jinja2-mode js2-refactor json-mode json-reformat jsx-mode keyfreq langtool layout-restore lispy list-utils magit markdown-mode minimap mo-git-blame nose ob-http olivetti org-caldav org-mobile-sync org-trello ox-rst ox-yawiki pandoc-mode paredit parinfer persp-mode popwin rainbow-delimiters realgud relative-line-numbers restclient skewer-mode slime-company sly smart-mode-line sotlisp spaceline tern-auto-complete w3 web-mode wgrep-helm which-key writeroom-mode xah-fly-keys yaml-mode yawiki-mode))
+   '(ace-jump-mode flycheck-color-mode-line folding goto-chg hideshowvis init-loader lsp-mode powerline projectile python-pytest reformatter reverse-im surround tempel treesit-auto undo-tree yaml-mode yasnippet))
  '(pyvenv-activate nil)
  '(safe-local-variable-values '((encoding . utf-8) (Package . CCL)))
  '(send-mail-function 'sendmail-send-it)

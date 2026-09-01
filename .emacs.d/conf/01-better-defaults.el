@@ -1,4 +1,5 @@
-(use-package better-defaults)
+(use-package better-defaults
+	     :ensure t)
 
 ;; Put all backups aside
 ;; better-defaults sets this variable,
